@@ -86,6 +86,15 @@ class PokemonType
     private $zones;
 
     /**
+     * @ORM\ManyToMany(targetEntity="PokemonType")
+     * @ORM\JoinTable(name="evolution",
+     *      joinColumns={@ORM\JoinColumn(name="evolution_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="evolution_type_parent", referencedColumnName="id")}
+     *      )
+     */
+    protected $evolutions;
+
+    /**
      * Get id
      *
      * @return int

@@ -3,6 +3,7 @@
 namespace RaufletBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Sonata\UserBundle\Entity\BaseUser;
 
 /**
  * Trainer
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="trainer")
  * @ORM\Entity(repositoryClass="RaufletBundle\Repository\TrainerRepository")
  */
-class Trainer
+class Trainer extends BaseUser
 {
     /**
      * @var int
@@ -19,7 +20,7 @@ class Trainer
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -76,6 +77,7 @@ class Trainer
      */
     public function __construct()
     {
+        parent::__construct();
         $this->pokemons = new \Doctrine\Common\Collections\ArrayCollection();
         $this->wins = new \Doctrine\Common\Collections\ArrayCollection();
     }

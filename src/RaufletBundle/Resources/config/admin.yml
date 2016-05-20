@@ -1,0 +1,22 @@
+services:
+    app.admin.objects:
+        class: RaufletBundle\Admin\ObjectsAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Objects" }
+        arguments:
+            - ~
+            - RaufletBundle\Entity\Objects
+            - ~
+        calls:
+            - [ setTranslationDomain, [RaufletBundle]]
+
+    app.admin.objects.type:
+        class: RaufletBundle\Admin\ObjectsTypeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "ObjectsType" }
+        arguments:
+            - ~
+            - RaufletBundle\Entity\ObjectsType
+            - ~
+        calls:
+            - [ setTranslationDomain, [RaufletBundle]]
