@@ -85,6 +85,7 @@ class PokemonType
      */
     private $zones;
 
+
     /**
      * @ORM\ManyToMany(targetEntity="PokemonType")
      * @ORM\JoinTable(name="evolution",
@@ -381,5 +382,39 @@ class PokemonType
     public function getZones()
     {
         return $this->zones;
+    }
+
+    /**
+     * Add evolution
+     *
+     * @param \RaufletBundle\Entity\PokemonType $evolution
+     *
+     * @return PokemonType
+     */
+    public function addEvolution(\RaufletBundle\Entity\PokemonType $evolution)
+    {
+        $this->evolutions[] = $evolution;
+
+        return $this;
+    }
+
+    /**
+     * Remove evolution
+     *
+     * @param \RaufletBundle\Entity\PokemonType $evolution
+     */
+    public function removeEvolution(\RaufletBundle\Entity\PokemonType $evolution)
+    {
+        $this->evolutions->removeElement($evolution);
+    }
+
+    /**
+     * Get evolutions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEvolutions()
+    {
+        return $this->evolutions;
     }
 }

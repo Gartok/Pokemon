@@ -20,3 +20,135 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [RaufletBundle]]
+
+    app.admin.arena:
+        class: RaufletBundle\Admin\ArenaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Arena" }
+        arguments:
+            - ~
+            - RaufletBundle\Entity\Arena
+            - ~
+        calls:
+            - [ setTranslationDomain, [RaufletBundle]]
+
+    app.admin.attack:
+        class: RaufletBundle\Admin\AttackAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Attaque" }
+        arguments:
+            - ~
+            - RaufletBundle\Entity\Attack
+            - ~
+        calls:
+            - [ setTranslationDomain, [RaufletBundle]]
+
+    app.admin.badge:
+        class: RaufletBundle\Admin\BadgeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Badge" }
+        arguments:
+            - ~
+            - RaufletBundle\Entity\Badge
+            - ~
+        calls:
+            - [ setTranslationDomain, [RaufletBundle]]
+
+    app.admin.npc:
+        class: RaufletBundle\Admin\NpcAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Npc" }
+        arguments:
+            - ~
+            - RaufletBundle\Entity\Npc
+            - ~
+        calls:
+            - [ setTranslationDomain, [RaufletBundle]]
+
+    app.admin.pokedex:
+        class: RaufletBundle\Admin\PokedexAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Pokedex" }
+        arguments:
+            - ~
+            - RaufletBundle\Entity\Pokedex
+            - ~
+        calls:
+            - [ setTranslationDomain, [RaufletBundle]]
+
+    app.admin.pokemons:
+        class: RaufletBundle\Admin\PokemonsAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Pokemon" }
+        arguments:
+            - ~
+            - RaufletBundle\Entity\Pokemons
+            - ~
+        calls:
+            - [ setTranslationDomain, [RaufletBundle]]
+
+    app.admin.pokemons.type:
+        class: RaufletBundle\Admin\PokemonsTypeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Type de Pokemon" }
+        arguments:
+            - ~
+            - RaufletBundle\Entity\PokemonsType
+            - ~
+        calls:
+            - [ setTranslationDomain, [RaufletBundle]]
+
+    app.admin.position:
+        class: RaufletBundle\Admin\PositionAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Position" }
+        arguments:
+            - ~
+            - RaufletBundle\Entity\Position
+            - ~
+        calls:
+            - [ setTranslationDomain, [RaufletBundle]]
+
+    app.admin.strong.against:
+        class: RaufletBundle\Admin\StrongAgainstAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Fort Contre" }
+        arguments:
+            - ~
+            - RaufletBundle\Entity\StrongAgainst
+            - ~
+        calls:
+            - [ setTranslationDomain, [RaufletBundle]]
+
+    app.admin.weak.against:
+        class: RaufletBundle\Admin\WeakAgainstAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Faible Contre" }
+        arguments:
+            - ~
+            - RaufletBundle\Entity\WeakAgainst
+            - ~
+        calls:
+            - [ setTranslationDomain, [RaufletBundle]]
+
+    app.admin.win:
+        class: RaufletBundle\Admin\WinAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Gagner" }
+        arguments:
+            - ~
+            - RaufletBundle\Entity\Win
+            - ~
+        calls:
+            - [ setTranslationDomain, [RaufletBundle]]
+
+    app.admin.zone:
+        class: RaufletBundle\Admin\ZoneAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Zone" }
+        arguments:
+            - ~
+            - RaufletBundle\Entity\Zone
+            - ~
+        calls:
+            - [ setTranslationDomain, [RaufletBundle]]

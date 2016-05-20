@@ -1,5 +1,4 @@
 <?php
-// src/AppBundle/Admin/PostAdmin.php
 
 namespace RaufletBundle\Admin;
 
@@ -9,25 +8,26 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 
-class ObjectsAdmin extends AbstractAdmin
+class ZoneAdmin extends AbstractAdmin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
             ->add('name', 'text', array(
-                'label' => 'Nom de l\'object'
+                'label' => 'Nom de la Zone'
             ))
-            ->add('quantity', 'number', array(
-                'label' => 'Nombre d\'object'
+            ->add('positions', 'entity', array(
+                'class' => 'RaufletBundle\Entity\Position',
+                'choice_label' => 'name',
             ))
-            ->add('type', 'entity', array(
-                'class' => 'RaufletBundle\Entity\ObjectsType',
-                'choice_label' => 'name'
+            ->add('pokemonTypes', 'entity', array(
+                'class' => 'RaufletBundle\Entity\PokemonTypes',
+                'choice_label' => 'name',
             ))
-            ->add('npc', 'entity', array(
-                'class' => 'RaufletBundle\Entity\Npc',
-                'choice_label' => 'name'
+            ->add('badges', 'entity', array(
+                'class' => 'RaufletBundle\Entity\Badge',
+                'choice_label' => 'name',
             ))
         ;
     }
@@ -36,11 +36,9 @@ class ObjectsAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name')
-            ->add('quantity')
-            ->add('type.name')
-            ->add('npc.name')
-
+            ->add('obtention')
+            ->add('trainer')
+            ->add('badge')
         ;
     }
 
@@ -48,11 +46,9 @@ class ObjectsAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id')
-            ->add('name')
-            ->add('quantity')
-            ->add('type.name')
-            ->add('npc.name')
+            ->addIdentifier('obtention')
+            ->add('trainer')
+            ->add('badge')
         ;
     }
 
@@ -60,10 +56,9 @@ class ObjectsAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name')
-            ->add('quantity')
-            ->add('type.name')
-            ->add('npc.name')
+            ->add('obtention')
+            ->add('trainer')
+            ->add('badge')
         ;
     }
 }

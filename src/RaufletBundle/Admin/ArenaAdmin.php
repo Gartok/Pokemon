@@ -9,7 +9,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 
-class ObjectsAdmin extends AbstractAdmin
+class ArenaAdmin extends AbstractAdmin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
@@ -18,15 +18,8 @@ class ObjectsAdmin extends AbstractAdmin
             ->add('name', 'text', array(
                 'label' => 'Nom de l\'object'
             ))
-            ->add('quantity', 'number', array(
-                'label' => 'Nombre d\'object'
-            ))
-            ->add('type', 'entity', array(
-                'class' => 'RaufletBundle\Entity\ObjectsType',
-                'choice_label' => 'name'
-            ))
-            ->add('npc', 'entity', array(
-                'class' => 'RaufletBundle\Entity\Npc',
+            ->add('position', 'entity', array(
+                'class' => 'RaufletBundle\Entity\Position',
                 'choice_label' => 'name'
             ))
         ;
@@ -37,10 +30,7 @@ class ObjectsAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('name')
-            ->add('quantity')
-            ->add('type.name')
-            ->add('npc.name')
-
+            ->add('position')
         ;
     }
 
@@ -50,9 +40,7 @@ class ObjectsAdmin extends AbstractAdmin
         $listMapper
             ->addIdentifier('id')
             ->add('name')
-            ->add('quantity')
-            ->add('type.name')
-            ->add('npc.name')
+            ->add('position')
         ;
     }
 
@@ -61,9 +49,7 @@ class ObjectsAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('name')
-            ->add('quantity')
-            ->add('type.name')
-            ->add('npc.name')
+            ->add('position')
         ;
     }
 }

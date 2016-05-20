@@ -9,25 +9,24 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 
-class ObjectsAdmin extends AbstractAdmin
+class TypeAdmin extends AbstractAdmin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
             ->add('name', 'text', array(
-                'label' => 'Nom de l\'object'
+                'label' => 'Nom'
             ))
-            ->add('quantity', 'number', array(
-                'label' => 'Nombre d\'object'
+            ->add('weakAgainsts', 'entity', array(
+                'class' => 'RaufletBundle\Entity\WeakAgainst',
+                'choice_label' => 'name',
+                'multiple' => true
             ))
-            ->add('type', 'entity', array(
-                'class' => 'RaufletBundle\Entity\ObjectsType',
-                'choice_label' => 'name'
-            ))
-            ->add('npc', 'entity', array(
-                'class' => 'RaufletBundle\Entity\Npc',
-                'choice_label' => 'name'
+            ->add('strongAgainsts', 'entity', array(
+                'class' => 'RaufletBundle\Entity\StrongAgainst',
+                'choice_label' => 'name',
+                'multiple' => true
             ))
         ;
     }
@@ -37,10 +36,8 @@ class ObjectsAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('name')
-            ->add('quantity')
-            ->add('type.name')
-            ->add('npc.name')
-
+            ->add('weakAgainsts')
+            ->add('strongAgainsts')
         ;
     }
 
@@ -48,11 +45,9 @@ class ObjectsAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id')
-            ->add('name')
-            ->add('quantity')
-            ->add('type.name')
-            ->add('npc.name')
+            ->addIdentifier('name')
+            ->add('weakAgainsts')
+            ->add('strongAgainsts')
         ;
     }
 
@@ -61,9 +56,8 @@ class ObjectsAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('name')
-            ->add('quantity')
-            ->add('type.name')
-            ->add('npc.name')
+            ->add('weakAgainsts')
+            ->add('strongAgainsts')
         ;
     }
 }

@@ -36,7 +36,7 @@ class Position
     private $y;
 
     /**
-     * @ORM\OneToMany(targetEntity="Zone", mappedBy="positions")
+     * @ORM\ManyToOne(targetEntity="Zone", inversedBy="positions")
      * @ORM\JoinColumn(nullable=false)
      */
     private $zone;
@@ -138,5 +138,19 @@ class Position
     public function getZone()
     {
         return $this->zone;
+    }
+
+    /**
+     * Set zone
+     *
+     * @param \RaufletBundle\Entity\Zone $zone
+     *
+     * @return Position
+     */
+    public function setZone(\RaufletBundle\Entity\Zone $zone)
+    {
+        $this->zone = $zone;
+
+        return $this;
     }
 }

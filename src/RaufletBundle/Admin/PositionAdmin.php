@@ -9,25 +9,21 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 
-class ObjectsAdmin extends AbstractAdmin
+class PositionAdmin extends AbstractAdmin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', 'text', array(
-                'label' => 'Nom de l\'object'
+            ->add('x', 'text', array(
+                'label' => 'Nom'
             ))
-            ->add('quantity', 'number', array(
-                'label' => 'Nombre d\'object'
+            ->add('y', 'number', array(
+                'label' => 'Attaque'
             ))
-            ->add('type', 'entity', array(
-                'class' => 'RaufletBundle\Entity\ObjectsType',
-                'choice_label' => 'name'
-            ))
-            ->add('npc', 'entity', array(
-                'class' => 'RaufletBundle\Entity\Npc',
-                'choice_label' => 'name'
+            ->add('zone', 'entity', array(
+                'class' => 'RaufletBundle\Entity\Zone',
+                'choice_label' => 'name',
             ))
         ;
     }
@@ -36,11 +32,9 @@ class ObjectsAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name')
-            ->add('quantity')
-            ->add('type.name')
-            ->add('npc.name')
-
+            ->add('x')
+            ->add('y')
+            ->add('zone')
         ;
     }
 
@@ -48,11 +42,9 @@ class ObjectsAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id')
-            ->add('name')
-            ->add('quantity')
-            ->add('type.name')
-            ->add('npc.name')
+            ->add('x')
+            ->add('y')
+            ->add('zone')
         ;
     }
 
@@ -60,10 +52,9 @@ class ObjectsAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name')
-            ->add('quantity')
-            ->add('type.name')
-            ->add('npc.name')
+            ->add('x')
+            ->add('y')
+            ->add('zone')
         ;
     }
 }

@@ -24,10 +24,19 @@ class StrongAgainst
     /**
      * @var string
      *
-     * @ORM\Column(name="modifier", type="decimal", precision=10, scale=0)
+     * @ORM\Column(name="modifier", type="decimal", precision=10, scale=2)
      */
     private $modifier;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Type")
+     */
+    private $firstType;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Type")
+     */
+    private $secondType;
 
     /**
      * Get id
@@ -61,5 +70,53 @@ class StrongAgainst
     public function getModifier()
     {
         return $this->modifier;
+    }
+
+    /**
+     * Set firstType
+     *
+     * @param \RaufletBundle\Entity\Type $firstType
+     *
+     * @return StrongAgainst
+     */
+    public function setFirstType(\RaufletBundle\Entity\Type $firstType = null)
+    {
+        $this->firstType = $firstType;
+
+        return $this;
+    }
+
+    /**
+     * Get firstType
+     *
+     * @return \RaufletBundle\Entity\Type
+     */
+    public function getFirstType()
+    {
+        return $this->firstType;
+    }
+
+    /**
+     * Set secondType
+     *
+     * @param \RaufletBundle\Entity\Type $secondType
+     *
+     * @return StrongAgainst
+     */
+    public function setSecondType(\RaufletBundle\Entity\Type $secondType = null)
+    {
+        $this->secondType = $secondType;
+
+        return $this;
+    }
+
+    /**
+     * Get secondType
+     *
+     * @return \RaufletBundle\Entity\Type
+     */
+    public function getSecondType()
+    {
+        return $this->secondType;
     }
 }

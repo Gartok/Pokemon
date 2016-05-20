@@ -9,24 +9,28 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 
-class ObjectsAdmin extends AbstractAdmin
+class NpcAdmin extends AbstractAdmin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
             ->add('name', 'text', array(
-                'label' => 'Nom de l\'object'
+                'label' => 'Nom'
             ))
-            ->add('quantity', 'number', array(
-                'label' => 'Nombre d\'object'
+            ->add('profession', 'text', array(
+                'label' => 'Profession'
             ))
-            ->add('type', 'entity', array(
-                'class' => 'RaufletBundle\Entity\ObjectsType',
-                'choice_label' => 'name'
+            ->add('text', 'text', array(
+                'label' => 'Texte'
             ))
-            ->add('npc', 'entity', array(
-                'class' => 'RaufletBundle\Entity\Npc',
+            ->add('objects', 'entity', array(
+                'class' => 'RaufletBundle\Entity\Objects',
+                'choice_label' => 'name',
+                'multiple' => true
+            ))
+            ->add('trainer', 'entity', array(
+                'class' => 'RaufletBundle\Entity\Trainer',
                 'choice_label' => 'name'
             ))
         ;
@@ -37,10 +41,9 @@ class ObjectsAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('name')
-            ->add('quantity')
-            ->add('type.name')
-            ->add('npc.name')
-
+            ->add('master')
+            ->add('arena')
+            ->add('zone')
         ;
     }
 
@@ -48,11 +51,10 @@ class ObjectsAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id')
             ->add('name')
-            ->add('quantity')
-            ->add('type.name')
-            ->add('npc.name')
+            ->add('master')
+            ->add('arena')
+            ->add('zone')
         ;
     }
 
@@ -61,9 +63,9 @@ class ObjectsAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('name')
-            ->add('quantity')
-            ->add('type.name')
-            ->add('npc.name')
+            ->add('master')
+            ->add('arena')
+            ->add('zone')
         ;
     }
 }

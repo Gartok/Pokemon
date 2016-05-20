@@ -34,6 +34,11 @@ class Arena
     private $position;
 
     /**
+     * @ORM\OneToOne(targetEntity="Badge")
+     */
+    private $badge;
+
+    /**
      * Get id
      *
      * @return int
@@ -89,5 +94,29 @@ class Arena
     public function getPosition()
     {
         return $this->position;
+    }
+
+    /**
+     * Set badge
+     *
+     * @param \RaufletBundle\Entity\Badge $badge
+     *
+     * @return Arena
+     */
+    public function setBadge(\RaufletBundle\Entity\Badge $badge = null)
+    {
+        $this->badge = $badge;
+
+        return $this;
+    }
+
+    /**
+     * Get badge
+     *
+     * @return \RaufletBundle\Entity\Badge
+     */
+    public function getBadge()
+    {
+        return $this->badge;
     }
 }

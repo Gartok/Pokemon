@@ -9,25 +9,22 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 
-class ObjectsAdmin extends AbstractAdmin
+class TrainerAdmin extends AbstractAdmin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
             ->add('name', 'text', array(
-                'label' => 'Nom de l\'object'
+                'label' => 'Nom'
             ))
-            ->add('quantity', 'number', array(
-                'label' => 'Nombre d\'object'
+            ->add('pokemons', 'entity', array(
+                'class' => 'RaufletBundle\Entity\Trainer',
+                'choice_label' => 'name',
             ))
-            ->add('type', 'entity', array(
-                'class' => 'RaufletBundle\Entity\ObjectsType',
-                'choice_label' => 'name'
-            ))
-            ->add('npc', 'entity', array(
-                'class' => 'RaufletBundle\Entity\Npc',
-                'choice_label' => 'name'
+            ->add('wins', 'entity', array(
+                'class' => 'RaufletBundle\Entity\Win',
+                'choice_label' => 'name',
             ))
         ;
     }
@@ -37,10 +34,8 @@ class ObjectsAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('name')
-            ->add('quantity')
-            ->add('type.name')
-            ->add('npc.name')
-
+            ->add('pokemons')
+            ->add('wins')
         ;
     }
 
@@ -48,11 +43,9 @@ class ObjectsAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id')
-            ->add('name')
-            ->add('quantity')
-            ->add('type.name')
-            ->add('npc.name')
+            ->addIdentifier('name')
+            ->add('pokemons')
+            ->add('wins')
         ;
     }
 
@@ -61,9 +54,8 @@ class ObjectsAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('name')
-            ->add('quantity')
-            ->add('type.name')
-            ->add('npc.name')
+            ->add('pokemons')
+            ->add('wins')
         ;
     }
 }

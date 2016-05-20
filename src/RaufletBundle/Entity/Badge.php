@@ -39,7 +39,7 @@ class Badge
     private $arena;
 
     /**
-     * @ORM\OneToMany(targetEntity="Zone", mappedBy="badges")
+     * @ORM\ManyToOne(targetEntity="Zone", inversedBy="badges")
      */
     private $zone;
 
@@ -164,5 +164,19 @@ class Badge
     public function getZone()
     {
         return $this->zone;
+    }
+
+    /**
+     * Set zone
+     *
+     * @param \RaufletBundle\Entity\Zone $zone
+     *
+     * @return Badge
+     */
+    public function setZone(\RaufletBundle\Entity\Zone $zone = null)
+    {
+        $this->zone = $zone;
+
+        return $this;
     }
 }

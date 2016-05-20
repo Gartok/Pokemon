@@ -42,6 +42,10 @@ class Attack
      */
     private $accurate;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Type")
+     */
+    private $type;
 
     /**
      * Get id
@@ -124,5 +128,29 @@ class Attack
     public function getAccurate()
     {
         return $this->accurate;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \RaufletBundle\Entity\Type $type
+     *
+     * @return Attack
+     */
+    public function setType(\RaufletBundle\Entity\Type $type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \RaufletBundle\Entity\Type
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

@@ -29,12 +29,12 @@ class Zone
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Badge", inversedBy="zone")
+     * @ORM\OneToMany(targetEntity="Badge", mappedBy="zone")
      */
     private $badges;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Position", inversedBy="zone")
+     * @ORM\OneToMany(targetEntity="Position", mappedBy="zone")
      */
     private $positions;
 
@@ -109,29 +109,6 @@ class Zone
         return $this->badges;
     }
 
-    /**
-     * Set positions
-     *
-     * @param \RaufletBundle\Entity\Position $positions
-     *
-     * @return Zone
-     */
-    public function setPositions(\RaufletBundle\Entity\Position $positions = null)
-    {
-        $this->positions = $positions;
-
-        return $this;
-    }
-
-    /**
-     * Get positions
-     *
-     * @return \RaufletBundle\Entity\Position
-     */
-    public function getPositions()
-    {
-        return $this->positions;
-    }
 
     /**
      * Add pokemonType
@@ -165,5 +142,77 @@ class Zone
     public function getPokemonTypes()
     {
         return $this->pokemonTypes;
+    }
+
+    /**
+     * Set positions
+     *
+     * @param \RaufletBundle\Entity\Position $positions
+     *
+     * @return Zone
+     */
+    public function setPositions(\RaufletBundle\Entity\Position $positions = null)
+    {
+        $this->positions = $positions;
+
+        return $this;
+    }
+
+    /**
+     * Get positions
+     *
+     * @return \RaufletBundle\Entity\Position
+     */
+    public function getPositions()
+    {
+        return $this->positions;
+    }
+
+    /**
+     * Add badge
+     *
+     * @param \RaufletBundle\Entity\Badge $badge
+     *
+     * @return Zone
+     */
+    public function addBadge(\RaufletBundle\Entity\Badge $badge)
+    {
+        $this->badges[] = $badge;
+
+        return $this;
+    }
+
+    /**
+     * Remove badge
+     *
+     * @param \RaufletBundle\Entity\Badge $badge
+     */
+    public function removeBadge(\RaufletBundle\Entity\Badge $badge)
+    {
+        $this->badges->removeElement($badge);
+    }
+
+    /**
+     * Add position
+     *
+     * @param \RaufletBundle\Entity\Position $position
+     *
+     * @return Zone
+     */
+    public function addPosition(\RaufletBundle\Entity\Position $position)
+    {
+        $this->positions[] = $position;
+
+        return $this;
+    }
+
+    /**
+     * Remove position
+     *
+     * @param \RaufletBundle\Entity\Position $position
+     */
+    public function removePosition(\RaufletBundle\Entity\Position $position)
+    {
+        $this->positions->removeElement($position);
     }
 }
