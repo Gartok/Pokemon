@@ -63,4 +63,3 @@ class StrongAgainst
         return $this->modifier;
     }
 }
-

@@ -28,6 +28,21 @@ class Zone
      */
     private $name;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Badge", inversedBy="zone")
+     */
+    private $badges;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Position", inversedBy="zone")
+     */
+    private $positions;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="PokemonType", inversedBy="zones")
+     * @ORM\JoinTable(name="users_groups")
+     */
+    private $pokemonTypes;
 
     /**
      * Get id
@@ -62,5 +77,93 @@ class Zone
     {
         return $this->name;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->pokemonTypes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Set badges
+     *
+     * @param \RaufletBundle\Entity\Badge $badges
+     *
+     * @return Zone
+     */
+    public function setBadges(\RaufletBundle\Entity\Badge $badges = null)
+    {
+        $this->badges = $badges;
+
+        return $this;
+    }
+
+    /**
+     * Get badges
+     *
+     * @return \RaufletBundle\Entity\Badge
+     */
+    public function getBadges()
+    {
+        return $this->badges;
+    }
+
+    /**
+     * Set positions
+     *
+     * @param \RaufletBundle\Entity\Position $positions
+     *
+     * @return Zone
+     */
+    public function setPositions(\RaufletBundle\Entity\Position $positions = null)
+    {
+        $this->positions = $positions;
+
+        return $this;
+    }
+
+    /**
+     * Get positions
+     *
+     * @return \RaufletBundle\Entity\Position
+     */
+    public function getPositions()
+    {
+        return $this->positions;
+    }
+
+    /**
+     * Add pokemonType
+     *
+     * @param \RaufletBundle\Entity\PokemonType $pokemonType
+     *
+     * @return Zone
+     */
+    public function addPokemonType(\RaufletBundle\Entity\PokemonType $pokemonType)
+    {
+        $this->pokemonTypes[] = $pokemonType;
+
+        return $this;
+    }
+
+    /**
+     * Remove pokemonType
+     *
+     * @param \RaufletBundle\Entity\PokemonType $pokemonType
+     */
+    public function removePokemonType(\RaufletBundle\Entity\PokemonType $pokemonType)
+    {
+        $this->pokemonTypes->removeElement($pokemonType);
+    }
+
+    /**
+     * Get pokemonTypes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPokemonTypes()
+    {
+        return $this->pokemonTypes;
+    }
+}

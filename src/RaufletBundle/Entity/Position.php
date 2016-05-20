@@ -35,6 +35,11 @@ class Position
      */
     private $y;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Zone", mappedBy="positions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $zone;
 
     /**
      * Get id
@@ -93,5 +98,45 @@ class Position
     {
         return $this->y;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->zone = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add zone
+     *
+     * @param \RaufletBundle\Entity\Zone $zone
+     *
+     * @return Position
+     */
+    public function addZone(\RaufletBundle\Entity\Zone $zone)
+    {
+        $this->zone[] = $zone;
+
+        return $this;
+    }
+
+    /**
+     * Remove zone
+     *
+     * @param \RaufletBundle\Entity\Zone $zone
+     */
+    public function removeZone(\RaufletBundle\Entity\Zone $zone)
+    {
+        $this->zone->removeElement($zone);
+    }
+
+    /**
+     * Get zone
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getZone()
+    {
+        return $this->zone;
+    }
+}

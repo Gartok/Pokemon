@@ -70,6 +70,20 @@ class PokemonType
      */
     private $life;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Type")
+     */
+    private $types;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Pokedex", mappedBy="pokemonTypes")
+     */
+    private $pokedex;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Zone", mappedBy="pokemonTypes")
+     */
+    private $zones;
 
     /**
      * Get id
@@ -248,5 +262,115 @@ class PokemonType
     {
         return $this->life;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->types = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->pokedex = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->zones = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add type
+     *
+     * @param \RaufletBundle\Entity\Type $type
+     *
+     * @return PokemonType
+     */
+    public function addType(\RaufletBundle\Entity\Type $type)
+    {
+        $this->types[] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Remove type
+     *
+     * @param \RaufletBundle\Entity\Type $type
+     */
+    public function removeType(\RaufletBundle\Entity\Type $type)
+    {
+        $this->types->removeElement($type);
+    }
+
+    /**
+     * Get types
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTypes()
+    {
+        return $this->types;
+    }
+
+    /**
+     * Add pokedex
+     *
+     * @param \RaufletBundle\Entity\Pokedex $pokedex
+     *
+     * @return PokemonType
+     */
+    public function addPokedex(\RaufletBundle\Entity\Pokedex $pokedex)
+    {
+        $this->pokedex[] = $pokedex;
+
+        return $this;
+    }
+
+    /**
+     * Remove pokedex
+     *
+     * @param \RaufletBundle\Entity\Pokedex $pokedex
+     */
+    public function removePokedex(\RaufletBundle\Entity\Pokedex $pokedex)
+    {
+        $this->pokedex->removeElement($pokedex);
+    }
+
+    /**
+     * Get pokedex
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPokedex()
+    {
+        return $this->pokedex;
+    }
+
+    /**
+     * Add zone
+     *
+     * @param \RaufletBundle\Entity\Zone $zone
+     *
+     * @return PokemonType
+     */
+    public function addZone(\RaufletBundle\Entity\Zone $zone)
+    {
+        $this->zones[] = $zone;
+
+        return $this;
+    }
+
+    /**
+     * Remove zone
+     *
+     * @param \RaufletBundle\Entity\Zone $zone
+     */
+    public function removeZone(\RaufletBundle\Entity\Zone $zone)
+    {
+        $this->zones->removeElement($zone);
+    }
+
+    /**
+     * Get zones
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getZones()
+    {
+        return $this->zones;
+    }
+}

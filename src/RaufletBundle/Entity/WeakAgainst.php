@@ -63,4 +63,3 @@ class WeakAgainst
         return $this->modifier;
     }
 }
-

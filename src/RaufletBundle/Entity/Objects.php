@@ -35,6 +35,16 @@ class Objects
      */
     private $quantity;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="ObjectsType", inversedBy="objects")
+     */
+    private $type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Npc", inversedBy="objects")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $npc;
 
     /**
      * Get id
@@ -93,5 +103,52 @@ class Objects
     {
         return $this->quantity;
     }
-}
 
+    /**
+     * Set type
+     *
+     * @param \RaufletBundle\Entity\ObjectsType $type
+     *
+     * @return Objects
+     */
+    public function setType(\RaufletBundle\Entity\ObjectsType $type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \RaufletBundle\Entity\ObjectsType
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set npc
+     *
+     * @param \RaufletBundle\Entity\Npc $npc
+     *
+     * @return Objects
+     */
+    public function setNpc(\RaufletBundle\Entity\Npc $npc)
+    {
+        $this->npc = $npc;
+
+        return $this;
+    }
+
+    /**
+     * Get npc
+     *
+     * @return \RaufletBundle\Entity\Npc
+     */
+    public function getNpc()
+    {
+        return $this->npc;
+    }
+}

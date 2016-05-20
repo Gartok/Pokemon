@@ -28,6 +28,16 @@ class Win
      */
     private $obtention;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Trainer", inversedBy="wins")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $trainer;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Badge")
+     */
+    private $badge;
 
     /**
      * Get id
@@ -62,5 +72,52 @@ class Win
     {
         return $this->obtention;
     }
-}
 
+    /**
+     * Set trainer
+     *
+     * @param \RaufletBundle\Entity\Trainer $trainer
+     *
+     * @return Win
+     */
+    public function setTrainer(\RaufletBundle\Entity\Trainer $trainer)
+    {
+        $this->trainer = $trainer;
+
+        return $this;
+    }
+
+    /**
+     * Get trainer
+     *
+     * @return \RaufletBundle\Entity\Trainer
+     */
+    public function getTrainer()
+    {
+        return $this->trainer;
+    }
+
+    /**
+     * Set badge
+     *
+     * @param \RaufletBundle\Entity\Badge $badge
+     *
+     * @return Win
+     */
+    public function setBadge(\RaufletBundle\Entity\Badge $badge = null)
+    {
+        $this->badge = $badge;
+
+        return $this;
+    }
+
+    /**
+     * Get badge
+     *
+     * @return \RaufletBundle\Entity\Badge
+     */
+    public function getBadge()
+    {
+        return $this->badge;
+    }
+}

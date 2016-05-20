@@ -28,6 +28,10 @@ class ObjectsType
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Objects", mappedBy="type")
+     */
+    private $objects;
 
     /**
      * Get id
@@ -62,5 +66,45 @@ class ObjectsType
     {
         return $this->name;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->objects = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add object
+     *
+     * @param \RaufletBundle\Entity\Objects $object
+     *
+     * @return ObjectsType
+     */
+    public function addObject(\RaufletBundle\Entity\Objects $object)
+    {
+        $this->objects[] = $object;
+
+        return $this;
+    }
+
+    /**
+     * Remove object
+     *
+     * @param \RaufletBundle\Entity\Objects $object
+     */
+    public function removeObject(\RaufletBundle\Entity\Objects $object)
+    {
+        $this->objects->removeElement($object);
+    }
+
+    /**
+     * Get objects
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObjects()
+    {
+        return $this->objects;
+    }
+}

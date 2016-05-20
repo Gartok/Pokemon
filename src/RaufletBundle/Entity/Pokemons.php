@@ -42,6 +42,36 @@ class Pokemons
      */
     private $catchDate;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Trainer", inversedBy="pokemons")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $trainer;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Attack")
+     */
+    private $firstAttack;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Attack")
+     */
+    private $secondAttack;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Attack")
+     */
+    private $thirdAttack;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Attack")
+     */
+    private $fourthAttack;
+
+    /**
+     * @ORM\OneToOne(targetEntity="PokemonType")
+     */
+    private $type;
 
     /**
      * Get id
@@ -124,5 +154,148 @@ class Pokemons
     {
         return $this->catchDate;
     }
-}
 
+    /**
+     * Set trainer
+     *
+     * @param \RaufletBundle\Entity\Trainer $trainer
+     *
+     * @return Pokemons
+     */
+    public function setTrainer(\RaufletBundle\Entity\Trainer $trainer)
+    {
+        $this->trainer = $trainer;
+
+        return $this;
+    }
+
+    /**
+     * Get trainer
+     *
+     * @return \RaufletBundle\Entity\Trainer
+     */
+    public function getTrainer()
+    {
+        return $this->trainer;
+    }
+
+    /**
+     * Set firstAttack
+     *
+     * @param \RaufletBundle\Entity\Attack $firstAttack
+     *
+     * @return Pokemons
+     */
+    public function setFirstAttack(\RaufletBundle\Entity\Attack $firstAttack = null)
+    {
+        $this->firstAttack = $firstAttack;
+
+        return $this;
+    }
+
+    /**
+     * Get firstAttack
+     *
+     * @return \RaufletBundle\Entity\Attack
+     */
+    public function getFirstAttack()
+    {
+        return $this->firstAttack;
+    }
+
+    /**
+     * Set secondAttack
+     *
+     * @param \RaufletBundle\Entity\Attack $secondAttack
+     *
+     * @return Pokemons
+     */
+    public function setSecondAttack(\RaufletBundle\Entity\Attack $secondAttack = null)
+    {
+        $this->secondAttack = $secondAttack;
+
+        return $this;
+    }
+
+    /**
+     * Get secondAttack
+     *
+     * @return \RaufletBundle\Entity\Attack
+     */
+    public function getSecondAttack()
+    {
+        return $this->secondAttack;
+    }
+
+    /**
+     * Set thirdAttack
+     *
+     * @param \RaufletBundle\Entity\Attack $thirdAttack
+     *
+     * @return Pokemons
+     */
+    public function setThirdAttack(\RaufletBundle\Entity\Attack $thirdAttack = null)
+    {
+        $this->thirdAttack = $thirdAttack;
+
+        return $this;
+    }
+
+    /**
+     * Get thirdAttack
+     *
+     * @return \RaufletBundle\Entity\Attack
+     */
+    public function getThirdAttack()
+    {
+        return $this->thirdAttack;
+    }
+
+    /**
+     * Set fourthAttack
+     *
+     * @param \RaufletBundle\Entity\Attack $fourthAttack
+     *
+     * @return Pokemons
+     */
+    public function setFourthAttack(\RaufletBundle\Entity\Attack $fourthAttack = null)
+    {
+        $this->fourthAttack = $fourthAttack;
+
+        return $this;
+    }
+
+    /**
+     * Get fourthAttack
+     *
+     * @return \RaufletBundle\Entity\Attack
+     */
+    public function getFourthAttack()
+    {
+        return $this->fourthAttack;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \RaufletBundle\Entity\PokemonType $type
+     *
+     * @return Pokemons
+     */
+    public function setType(\RaufletBundle\Entity\PokemonType $type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \RaufletBundle\Entity\PokemonType
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+}

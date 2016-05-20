@@ -28,6 +28,15 @@ class Trainer
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Pokemons", mappedBy="trainer")
+     */
+    private $pokemons;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Win", mappedBy="trainer")
+     */
+    private $wins;
 
     /**
      * Get id
@@ -62,5 +71,80 @@ class Trainer
     {
         return $this->name;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->pokemons = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->wins = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add pokemon
+     *
+     * @param \RaufletBundle\Entity\Pokemons $pokemon
+     *
+     * @return Trainer
+     */
+    public function addPokemon(\RaufletBundle\Entity\Pokemons $pokemon)
+    {
+        $this->pokemons[] = $pokemon;
+
+        return $this;
+    }
+
+    /**
+     * Remove pokemon
+     *
+     * @param \RaufletBundle\Entity\Pokemons $pokemon
+     */
+    public function removePokemon(\RaufletBundle\Entity\Pokemons $pokemon)
+    {
+        $this->pokemons->removeElement($pokemon);
+    }
+
+    /**
+     * Get pokemons
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPokemons()
+    {
+        return $this->pokemons;
+    }
+
+    /**
+     * Add win
+     *
+     * @param \RaufletBundle\Entity\Win $win
+     *
+     * @return Trainer
+     */
+    public function addWin(\RaufletBundle\Entity\Win $win)
+    {
+        $this->wins[] = $win;
+
+        return $this;
+    }
+
+    /**
+     * Remove win
+     *
+     * @param \RaufletBundle\Entity\Win $win
+     */
+    public function removeWin(\RaufletBundle\Entity\Win $win)
+    {
+        $this->wins->removeElement($win);
+    }
+
+    /**
+     * Get wins
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWins()
+    {
+        return $this->wins;
+    }
+}

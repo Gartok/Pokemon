@@ -28,6 +28,10 @@ class Arena
      */
     private $name;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Position")
+     */
+    private $position;
 
     /**
      * Get id
@@ -62,5 +66,28 @@ class Arena
     {
         return $this->name;
     }
-}
 
+    /**
+     * Set position
+     *
+     * @param \RaufletBundle\Entity\Position $position
+     *
+     * @return Arena
+     */
+    public function setPosition(\RaufletBundle\Entity\Position $position = null)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return \RaufletBundle\Entity\Position
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+}

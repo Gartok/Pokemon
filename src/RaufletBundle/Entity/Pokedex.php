@@ -21,6 +21,10 @@ class Pokedex
      */
     private $id;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="PokemonType", inversedBy="pokedex")
+     */
+    private $pokemonTypes;
 
     /**
      * Get id
@@ -31,5 +35,28 @@ class Pokedex
     {
         return $this->id;
     }
-}
 
+    /**
+     * Set pokemonTypes
+     *
+     * @param \RaufletBundle\Entity\PokemonType $pokemonTypes
+     *
+     * @return Pokedex
+     */
+    public function setPokemonTypes(\RaufletBundle\Entity\PokemonType $pokemonTypes = null)
+    {
+        $this->pokemonTypes = $pokemonTypes;
+
+        return $this;
+    }
+
+    /**
+     * Get pokemonTypes
+     *
+     * @return \RaufletBundle\Entity\PokemonType
+     */
+    public function getPokemonTypes()
+    {
+        return $this->pokemonTypes;
+    }
+}

@@ -42,6 +42,15 @@ class Npc
      */
     private $text;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Objects", mappedBy="npc")
+     */
+    private $objects;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Trainer", cascade={"persist"})
+     */
+    private $trainer;
 
     /**
      * Get id
@@ -124,5 +133,69 @@ class Npc
     {
         return $this->text;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->objects = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add object
+     *
+     * @param \RaufletBundle\Entity\Objects $object
+     *
+     * @return Npc
+     */
+    public function addObject(\RaufletBundle\Entity\Objects $object)
+    {
+        $this->objects[] = $object;
+
+        return $this;
+    }
+
+    /**
+     * Remove object
+     *
+     * @param \RaufletBundle\Entity\Objects $object
+     */
+    public function removeObject(\RaufletBundle\Entity\Objects $object)
+    {
+        $this->objects->removeElement($object);
+    }
+
+    /**
+     * Get objects
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObjects()
+    {
+        return $this->objects;
+    }
+
+    /**
+     * Set trainer
+     *
+     * @param \RaufletBundle\Entity\Trainer $trainer
+     *
+     * @return Npc
+     */
+    public function setTrainer(\RaufletBundle\Entity\Trainer $trainer = null)
+    {
+        $this->trainer = $trainer;
+
+        return $this;
+    }
+
+    /**
+     * Get trainer
+     *
+     * @return \RaufletBundle\Entity\Trainer
+     */
+    public function getTrainer()
+    {
+        return $this->trainer;
+    }
+}
