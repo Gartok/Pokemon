@@ -25,41 +25,48 @@ class PositionLoadData extends AbstractFixture implements FixtureInterface, Orde
 
         $object->setX(154);
         $object->setY(160);
-        $object->addZone($this->getReference("zone1"));
+        $object->setZone($this->getReference("zone1"));
 
         $manager->persist($object);
+        $this->addReference("position1", $object);
 
         $object = new Position();
 
         $object->setX(254);
         $object->setY(998);
-        $object->addZone($this->getReference("zone2"));
+
+        $object->setZone($this->getReference("zone2"));
 
         $manager->persist($object);
+        $this->addReference("position2", $object);
 
         $object = new Position();
 
         $object->setX(124);
         $object->setY(324);
-        $object->addZone($this->getReference("zone1"));
+        $object->setZone($this->getReference("zone1"));
 
         $manager->persist($object);
+        $this->addReference("position3", $object);
 
         $object = new Position();
 
         $object->setX(120);
         $object->setY(145);
-        $object->addZone($this->getReference("zone1"));
+        $object->setZone($this->getReference("zone1"));
 
         $manager->persist($object);
+        $this->addReference("position4", $object);
 
         $object = new Position();
 
         $object->setX(199);
         $object->setY(99);
-        $object->addZone($this->getReference("zone1"));
+        $object->setZone($this->getReference("zone1"));
 
         $manager->persist($object);
+
+        $this->addReference("position5", $object);
 
         $manager->flush();
     }
@@ -68,7 +75,7 @@ class PositionLoadData extends AbstractFixture implements FixtureInterface, Orde
     {
         // the order in which fixtures will be loaded
         // the lower the number, the sooner that this fixture is loaded
-        return 13;
+        return 12;
     }
 }
 

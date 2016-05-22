@@ -45,6 +45,23 @@ class NpcLoadData extends AbstractFixture implements FixtureInterface, OrderedFi
 
         $this->addReference("npc3", $object);
 
+        $object->setName('Morgane');
+        $object->setProfession('Champion');
+        $object->setText('J\'aime les pokémons psy !');
+        $object->setTrainer($this->getReference('trainer6'));
+        $manager->persist($object);
+
+        $this->addReference("npc6", $object);
+
+        $object->setName('Auguste');
+        $object->setProfession('Champion');
+        $object->setText('J\'aime les pokémons augustes !');
+        $object->setTrainer($this->getReference('trainer7'));
+        $manager->persist($object);
+
+        $this->addReference("npc7", $object);
+
+
         $manager->flush();
 
 
@@ -54,7 +71,7 @@ class NpcLoadData extends AbstractFixture implements FixtureInterface, OrderedFi
     {
         // the order in which fixtures will be loaded
         // the lower the number, the sooner that this fixture is loaded
-        return 1;
+        return 2;
     }
 }
 

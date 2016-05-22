@@ -3,12 +3,13 @@ namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use RaufletBundle\Entity\Trainer;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class TrainerLoadData extends AbstractFixture implements FixtureInterface, ContainerAwareInterface
+class TrainerLoadData extends AbstractFixture implements FixtureInterface, OrderedFixtureInterface
 {
 
     /**
@@ -23,8 +24,6 @@ class TrainerLoadData extends AbstractFixture implements FixtureInterface, Conta
 
     public function load(ObjectManager $manager)
     {
-        $userManager = $this->container->get('fos_user.user_manager');
-
         $object = new Trainer();
 
         $object->setUsername('Pierre');
@@ -55,20 +54,51 @@ class TrainerLoadData extends AbstractFixture implements FixtureInterface, Conta
         $object->setName('Sacha');
         $object->setEmail('sacha@pokemon.com');
         $object->setEnabled(true);
-
+        $object->setRoles(array('ROLE_ADMIN'));
         $manager->persist($object);
         $this->addReference("trainer4", $object);
 
+        $object = new Trainer();
+
         $object->setUsername('major');
         $object->setPlainPassword('major');
-        $object->setName('Majkor');
+        $object->setName('Major');
         $object->setEmail('majorbob@pokemon.com');
         $object->setEnabled(true);
 
         $manager->persist($object);
         $this->addReference("trainer3", $object);
 
+        $object = new Trainer();
+
+        $object->setUsername('morgane');
+        $object->setPlainPassword('morgane');
+        $object->setName('Morgane');
+        $object->setEmail('morgane@pokemon.com');
+        $object->setEnabled(true);
+
+        $manager->persist($object);
+        $this->addReference("trainer6", $object);
+
+        $object = new Trainer();
+
+        $object->setUsername('auguste');
+        $object->setPlainPassword('auguste');
+        $object->setName('Auguste');
+        $object->setEmail('auguste@pokemon.com');
+        $object->setEnabled(true);
+
+        $manager->persist($object);
+        $this->addReference("trainer7", $object);
+
         $manager->flush();
+    }
+
+    public function getOrder()
+    {
+        // the order in which fixtures will be loaded
+        // the lower the number, the sooner that this fixture is loaded
+        return 1;
     }
 }
 

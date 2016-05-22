@@ -22,7 +22,7 @@ class Pokedex
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="PokemonType", inversedBy="pokedex")
+     * @ORM\OneToMany(targetEntity="PokemonType", mappedBy="pokedex")
      */
     private $pokemonTypes;
 
@@ -58,5 +58,36 @@ class Pokedex
     public function getPokemonTypes()
     {
         return $this->pokemonTypes;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->pokemonTypes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add pokemonType
+     *
+     * @param \RaufletBundle\Entity\PokemonType $pokemonType
+     *
+     * @return Pokedex
+     */
+    public function addPokemonType(\RaufletBundle\Entity\PokemonType $pokemonType)
+    {
+        $this->pokemonTypes[] = $pokemonType;
+
+        return $this;
+    }
+
+    /**
+     * Remove pokemonType
+     *
+     * @param \RaufletBundle\Entity\PokemonType $pokemonType
+     */
+    public function removePokemonType(\RaufletBundle\Entity\PokemonType $pokemonType)
+    {
+        $this->pokemonTypes->removeElement($pokemonType);
     }
 }

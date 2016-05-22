@@ -33,8 +33,8 @@ class WinAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('obtention')
-            ->add('trainer')
-            ->add('badge')
+            ->add('trainer.username')
+            ->add('badge.name')
         ;
     }
 
@@ -43,8 +43,8 @@ class WinAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('obtention')
-            ->add('trainer')
-            ->add('badge')
+            ->add('trainer.username')
+            ->add('badge.name')
         ;
     }
 
@@ -53,8 +53,8 @@ class WinAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('obtention')
-            ->add('trainer')
-            ->add('badge')
+            ->add('trainer.username')
+            ->add('badge.name')
         ;
     }
 }

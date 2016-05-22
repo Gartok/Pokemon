@@ -29,11 +29,6 @@ class Zone
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Badge", mappedBy="zone")
-     */
-    private $badges;
-
-    /**
      * @ORM\OneToMany(targetEntity="Position", mappedBy="zone")
      */
     private $positions;

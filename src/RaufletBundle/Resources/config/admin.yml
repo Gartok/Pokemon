@@ -88,12 +88,12 @@ services:
             - [ setTranslationDomain, [RaufletBundle]]
 
     app.admin.pokemons.type:
-        class: RaufletBundle\Admin\PokemonsTypeAdmin
+        class: RaufletBundle\Admin\PokemonTypeAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: "Type de Pokemon" }
         arguments:
             - ~
-            - RaufletBundle\Entity\PokemonsType
+            - RaufletBundle\Entity\PokemonType
             - ~
         calls:
             - [ setTranslationDomain, [RaufletBundle]]

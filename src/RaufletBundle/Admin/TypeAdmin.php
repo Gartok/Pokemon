@@ -36,8 +36,8 @@ class TypeAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('name')
-            ->add('weakAgainsts')
-            ->add('strongAgainsts')
+            ->add('firstType.name')
+            ->add('secondType.name')
         ;
     }
 
@@ -46,8 +46,8 @@ class TypeAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('name')
-            ->add('weakAgainsts')
-            ->add('strongAgainsts')
+            ->add('firstType.name')
+            ->add('secondType.name')
         ;
     }
 
@@ -56,8 +56,8 @@ class TypeAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('name')
-            ->add('weakAgainsts')
-            ->add('strongAgainsts')
+            ->add('firstType.name')
+            ->add('secondType.name')
         ;
     }
 }

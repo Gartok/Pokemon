@@ -27,7 +27,7 @@ class WeakAgainstLoadData extends AbstractFixture implements FixtureInterface, O
 
         $object = new WeakAgainst();
 
-        $object->setName('2.25');
+        $object->setModifier('2.25');
         $object->setFirstType($this->getReference("type1"));
         $object->setSecondType($this->getReference("type11"));
         $manager->persist($object);

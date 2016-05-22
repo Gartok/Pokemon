@@ -23,7 +23,7 @@ class WinLoadData extends AbstractFixture implements FixtureInterface, OrderedFi
         $object->setBadge($this->getReference("badge1"));
         $manager->persist($object);
 
-        $this->addReference("win1");
+        $this->addReference("win1", $object);
 
         $object = new Win();
 
@@ -31,7 +31,7 @@ class WinLoadData extends AbstractFixture implements FixtureInterface, OrderedFi
         $object->setTrainer($this->getReference("trainer4"));
         $manager->persist($object);
 
-        $this->addReference("win2");
+        $this->addReference("win2", $object);
 
         $object = new Win();
 
@@ -40,7 +40,7 @@ class WinLoadData extends AbstractFixture implements FixtureInterface, OrderedFi
         $object->setBadge($this->getReference("badge2"));
         $manager->persist($object);
 
-        $this->addReference("win3");
+        $this->addReference("win3", $object );
 
         $manager->flush();
     }
@@ -49,7 +49,7 @@ class WinLoadData extends AbstractFixture implements FixtureInterface, OrderedFi
     {
         // the order in which fixtures will be loaded
         // the lower the number, the sooner that this fixture is loaded
-        return 14;
+        return 15;
     }
 }
 

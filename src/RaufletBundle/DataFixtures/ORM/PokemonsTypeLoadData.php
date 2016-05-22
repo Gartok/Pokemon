@@ -29,6 +29,10 @@ class PokemonsTypeLoadData extends AbstractFixture implements FixtureInterface, 
         $object->setAttackSpe(65);
         $object->setDefenceSpe(65);
         $object->setSpeed(45);
+        $object->addEvolution('pokemontype2');
+        $object->addPokedex('pokedex1');
+        $object->addType('type8');
+        $object->addType('zone1');
 
         $manager->persist($object);
 
@@ -43,6 +47,11 @@ class PokemonsTypeLoadData extends AbstractFixture implements FixtureInterface, 
         $object->setAttackSpe(80);
         $object->setDefenceSpe(80);
         $object->setSpeed(60);
+        $object->addEvolution('pokemontype3');
+        $object->addPokedex('pokedex2');
+        $object->addType('type8');
+        $object->addType('type9');
+        $object->addZone('zone1');
 
         $manager->persist($object);
 
@@ -57,6 +66,11 @@ class PokemonsTypeLoadData extends AbstractFixture implements FixtureInterface, 
         $object->setAttackSpe(100);
         $object->setDefenceSpe(100);
         $object->setSpeed(80);
+        $object->addPokedex('pokedex1');
+        $object->addType('type8');
+        $object->addType('type9');
+        $object->addZone('zone1');
+        $object->addPokedex('pokedex3');
 
         $manager->persist($object);
 
@@ -71,6 +85,10 @@ class PokemonsTypeLoadData extends AbstractFixture implements FixtureInterface, 
         $object->setAttackSpe(60);
         $object->setDefenceSpe(50);
         $object->setSpeed(65);
+        $object->addType('type5');
+        $object->addEvolution('pokemontype5');
+        $object->addZone('zone2');
+        $object->addPokedex('pokedex4');
 
         $manager->persist($object);
 
@@ -85,6 +103,9 @@ class PokemonsTypeLoadData extends AbstractFixture implements FixtureInterface, 
         $object->setAttackSpe(80);
         $object->setDefenceSpe(65);
         $object->setSpeed(80);
+        $object->addType('type5');
+        $object->addZone('zone2');
+        $object->addPokedex('pokedex5');
 
         $manager->persist($object);
 

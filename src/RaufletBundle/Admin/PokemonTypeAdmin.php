@@ -9,7 +9,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 
-class PokemonsTypeAdmin extends AbstractAdmin
+class PokemonTypeAdmin extends AbstractAdmin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
@@ -43,11 +43,18 @@ class PokemonsTypeAdmin extends AbstractAdmin
             ))
             ->add('pokedex', 'entity', array(
                 'class' => 'RaufletBundle\Entity\Pokedex',
-                'choice_label' => 'name'
+                'choice_label' => 'id'
             ))
-            ->add('zone', 'entity', array(
+            ->add('zones', 'entity', array(
                 'class' => 'RaufletBundle\Entity\Zone',
                 'choice_label' => 'name',
+                'multiple' => true
+            ))
+            ->add('evolutions', 'sonata_type_collection', array(
+                'required' => false,
+                'btn_add'       => 'Ajouter une Evolution',      //Specify a custom label
+            ), array(
+                'placeholder' => 'Aucune Evolution sélectionner',
                 'multiple' => true
             ))
         ;
@@ -64,9 +71,10 @@ class PokemonsTypeAdmin extends AbstractAdmin
             ->add('defenceSpe')
             ->add('speed')
             ->add('life')
-            ->add('types')
-            ->add('pokedex')
-            ->add('zone')
+            ->add('types.name')
+            ->add('pokedex.id')
+            ->add('zones.name')
+            ->add('evolutions.name')
         ;
     }
 
@@ -81,9 +89,10 @@ class PokemonsTypeAdmin extends AbstractAdmin
             ->add('defenceSpe')
             ->add('speed')
             ->add('life')
-            ->add('types')
-            ->add('pokedex')
-            ->add('zone')
+            ->add('types.name')
+            ->add('pokedex.id')
+            ->add('zones.name')
+            ->add('evolutions.name')
         ;
     }
 
@@ -98,9 +107,10 @@ class PokemonsTypeAdmin extends AbstractAdmin
             ->add('defenceSpe')
             ->add('speed')
             ->add('life')
-            ->add('types')
-            ->add('pokedex')
-            ->add('zone')
+            ->add('types.name')
+            ->add('pokedex.id')
+            ->add('zones.name')
+            ->add('evolutions.name')
         ;
     }
 }

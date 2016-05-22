@@ -15,24 +15,6 @@ class PokedexAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', 'text', array(
-                'label' => 'Nom'
-            ))
-            ->add('profession', 'text', array(
-                'label' => 'Profession'
-            ))
-            ->add('text', 'text', array(
-                'label' => 'Texte'
-            ))
-            ->add('objects', 'entity', array(
-                'class' => 'RaufletBundle\Entity\Objects',
-                'choice_label' => 'name',
-                'multiple' => true
-            ))
-            ->add('trainer', 'entity', array(
-                'class' => 'RaufletBundle\Entity\Trainer',
-                'choice_label' => 'name'
-            ))
         ;
     }
 
@@ -40,11 +22,7 @@ class PokedexAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name')
-            ->add('profession')
-            ->add('text')
-            ->add('objects.name')
-            ->add('trainer.name')
+            ->add('id')
         ;
     }
 
@@ -53,11 +31,6 @@ class PokedexAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('id')
-            ->add('name')
-            ->add('profession')
-            ->add('text')
-            ->add('objects.name')
-            ->add('trainer.name')
         ;
     }
 
@@ -65,11 +38,7 @@ class PokedexAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name')
-            ->add('profession')
-            ->add('text')
-            ->add('objects.name')
-            ->add('trainer.name')
+            ->add('id')
         ;
     }
 }

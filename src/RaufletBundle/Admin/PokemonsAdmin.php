@@ -58,12 +58,12 @@ class PokemonsAdmin extends AbstractAdmin
             ->add('surname')
             ->add('level')
             ->add('catchDate')
-            ->add('trainer')
-            ->add('firstAttack')
-            ->add('secondAttack')
-            ->add('thirdAttack')
-            ->add('fourthAttack')
-            ->add('type')
+            ->add('trainer.name')
+            ->add('firstAttack.name')
+            ->add('secondAttack.name')
+            ->add('thirdAttack.name')
+            ->add('fourthAttack.name')
+            ->add('type.name')
 
         ;
     }
@@ -75,12 +75,12 @@ class PokemonsAdmin extends AbstractAdmin
             ->addIdentifier('surname')
             ->add('level')
             ->add('catchDate')
-            ->add('trainer')
-            ->add('firstAttack')
-            ->add('secondAttack')
-            ->add('thirdAttack')
-            ->add('fourthAttack')
-            ->add('type')
+            ->add('trainer.name')
+            ->add('firstAttack.name')
+            ->add('secondAttack.name')
+            ->add('thirdAttack.name')
+            ->add('fourthAttack.name')
+            ->add('type.name')
         ;
     }
 
@@ -91,12 +91,12 @@ class PokemonsAdmin extends AbstractAdmin
             ->add('surname')
             ->add('level')
             ->add('catchDate')
-            ->add('trainer')
-            ->add('firstAttack')
-            ->add('secondAttack')
-            ->add('thirdAttack')
-            ->add('fourthAttack')
-            ->add('type')
+            ->add('trainer.name')
+            ->add('firstAttack.name')
+            ->add('secondAttack.name')
+            ->add('thirdAttack.name')
+            ->add('fourthAttack.name')
+            ->add('type.name')
         ;
     }
 }

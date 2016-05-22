@@ -76,7 +76,7 @@ class PokemonType
     private $types;
 
     /**
-     * @ORM\OneToMany(targetEntity="Pokedex", mappedBy="pokemonTypes")
+     * @ORM\ManyToOne(targetEntity="Pokedex", inversedBy="pokemonTypes")
      */
     private $pokedex;
 
@@ -278,7 +278,6 @@ class PokemonType
     public function __construct()
     {
         $this->types = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->pokedex = new \Doctrine\Common\Collections\ArrayCollection();
         $this->zones = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -317,30 +316,6 @@ class PokemonType
     }
 
     /**
-     * Add pokedex
-     *
-     * @param \RaufletBundle\Entity\Pokedex $pokedex
-     *
-     * @return PokemonType
-     */
-    public function addPokedex(\RaufletBundle\Entity\Pokedex $pokedex)
-    {
-        $this->pokedex[] = $pokedex;
-
-        return $this;
-    }
-
-    /**
-     * Remove pokedex
-     *
-     * @param \RaufletBundle\Entity\Pokedex $pokedex
-     */
-    public function removePokedex(\RaufletBundle\Entity\Pokedex $pokedex)
-    {
-        $this->pokedex->removeElement($pokedex);
-    }
-
-    /**
      * Get pokedex
      *
      * @return \Doctrine\Common\Collections\Collection
@@ -349,6 +324,21 @@ class PokemonType
     {
         return $this->pokedex;
     }
+
+    /**
+     * Set pokedex
+     *
+     * @param Pokedex $pokedex
+     *
+     * @return PokemonType
+     */
+    public function setPokedex($pokedex)
+    {
+        $this->pokedex = $pokedex;
+
+        return $this;
+    }
+
 
     /**
      * Add zone

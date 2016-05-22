@@ -17,6 +17,16 @@ class WeakAgainstAdmin extends AbstractAdmin
             ->add('modifier', 'number', array(
                 'label' => 'Modificateur'
             ))
+            ->add('firstType', 'entity', array(
+                'label' => 'Type Attaquant',
+                'class' => 'RaufletBundle\Entity\Type',
+                'choice_label' => 'name',
+            ))
+            ->add('secondType', 'entity', array(
+                'label' => 'Type Défenseur',
+                'class' => 'RaufletBundle\Entity\Type',
+                'choice_label' => 'name'
+            ))
         ;
     }
 
@@ -25,6 +35,8 @@ class WeakAgainstAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('modifier')
+            ->add('firstType.name')
+            ->add('secondType.name')
         ;
     }
 
@@ -33,6 +45,8 @@ class WeakAgainstAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('modifier')
+            ->add('firstType.name')
+            ->add('secondType.name')
         ;
     }
 
@@ -41,6 +55,8 @@ class WeakAgainstAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('modifier')
+            ->add('firstType.name')
+            ->add('secondType.name')
         ;
     }
 }

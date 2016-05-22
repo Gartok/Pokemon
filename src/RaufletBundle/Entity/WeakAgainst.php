@@ -29,12 +29,12 @@ class WeakAgainst
     private $modifier;
 
     /**
-     * @ORM\OneToOne(targetEntity="Type")
+     * @ORM\ManyToOne(targetEntity="Type")
      */
     private $firstType;
 
     /**
-     * @ORM\OneToOne(targetEntity="Type")
+     * @ORM\ManyToOne(targetEntity="Type")
      */
     private $secondType;
 

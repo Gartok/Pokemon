@@ -18,9 +18,13 @@ class ArenaAdmin extends AbstractAdmin
             ->add('name', 'text', array(
                 'label' => 'Nom de l\'object'
             ))
-            ->add('position', 'entity', array(
-                'class' => 'RaufletBundle\Entity\Position',
-                'choice_label' => 'name'
+            ->add('position', 'sonata_type_model_list', array(
+                'btn_add'       => 'Ajouter une Position',      //Specify a custom label
+                'btn_list'      => false,     //which will be translated
+                'btn_delete'    => false,             //or hide the button.
+                'btn_catalogue' => 'SonataNewsBundle' //Custom translation domain for buttons
+            ), array(
+                'placeholder' => 'Aucune Position sélectionner'
             ))
         ;
     }

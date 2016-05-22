@@ -21,10 +21,9 @@ class ZoneLoadData extends AbstractFixture implements FixtureInterface, OrderedF
 
         $object->setName("Celadopole");
         $object->addPokemonType($this->getReference("pokemontype1"));
-        $object->addBadge($this->getReference("badge1"));
         $manager->persist($object);
 
-        $this->addReference("zone1");
+        $this->addReference("zone1", $object);
 
         $object = new Zone();
 
@@ -34,16 +33,15 @@ class ZoneLoadData extends AbstractFixture implements FixtureInterface, OrderedF
         $object->addPokemonType($this->getReference("pokemontype4"));
         $manager->persist($object);
 
-        $this->addReference("zone2");
+        $this->addReference("zone2", $object);
 
         $object = new Zone();
 
         $object->setName("Parmanie");
         $object->addPokemonType($this->getReference("pokemontype1"));
-        $object->addBadge($this->getReference("badge2"));
         $manager->persist($object);
 
-        $this->addReference("zone3");
+        $this->addReference("zone3", $object);
 
         $manager->flush();
     }
@@ -52,7 +50,7 @@ class ZoneLoadData extends AbstractFixture implements FixtureInterface, OrderedF
     {
         // the order in which fixtures will be loaded
         // the lower the number, the sooner that this fixture is loaded
-        return 12;
+        return 11;
     }
 }
 

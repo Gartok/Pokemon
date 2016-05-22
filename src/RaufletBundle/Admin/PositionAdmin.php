@@ -15,11 +15,11 @@ class PositionAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('x', 'text', array(
-                'label' => 'Nom'
+            ->add('x', 'number', array(
+                'label' => 'Position X'
             ))
             ->add('y', 'number', array(
-                'label' => 'Attaque'
+                'label' => 'Position Y'
             ))
             ->add('zone', 'entity', array(
                 'class' => 'RaufletBundle\Entity\Zone',
@@ -34,7 +34,7 @@ class PositionAdmin extends AbstractAdmin
         $datagridMapper
             ->add('x')
             ->add('y')
-            ->add('zone')
+            ->add('zone.name')
         ;
     }
 
@@ -42,9 +42,10 @@ class PositionAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->addIdentifier('id')
             ->add('x')
             ->add('y')
-            ->add('zone')
+            ->add('zone.name')
         ;
     }
 
@@ -54,7 +55,7 @@ class PositionAdmin extends AbstractAdmin
         $showMapper
             ->add('x')
             ->add('y')
-            ->add('zone')
+            ->add('zone.name')
         ;
     }
 }

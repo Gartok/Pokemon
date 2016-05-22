@@ -38,9 +38,9 @@ class BadgeAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('name')
-            ->add('master')
-            ->add('arena')
-            ->add('zone')
+            ->add('master.name')
+            ->add('arena.name')
+            ->add('zone.name')
         ;
     }
 
@@ -48,10 +48,11 @@ class BadgeAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->addIdentifier('id')
             ->add('name')
-            ->add('master')
-            ->add('arena')
-            ->add('zone')
+            ->add('master.name')
+            ->add('arena.name')
+            ->add('zone.name')
         ;
     }
 
@@ -59,10 +60,10 @@ class BadgeAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('name')
-            ->add('master')
-            ->add('arena')
-            ->add('zone')
+            ->add('name.name')
+            ->add('master.name')
+            ->add('arena.name')
+            ->add('zone.name')
         ;
     }
 }

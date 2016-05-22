@@ -24,11 +24,6 @@ class NpcAdmin extends AbstractAdmin
             ->add('text', 'text', array(
                 'label' => 'Texte'
             ))
-            ->add('objects', 'entity', array(
-                'class' => 'RaufletBundle\Entity\Objects',
-                'choice_label' => 'name',
-                'multiple' => true
-            ))
             ->add('trainer', 'entity', array(
                 'class' => 'RaufletBundle\Entity\Trainer',
                 'choice_label' => 'name'
@@ -41,9 +36,10 @@ class NpcAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('name')
-            ->add('master')
-            ->add('arena')
-            ->add('zone')
+            ->add('profession')
+            ->add('text')
+            ->add('objects.name')
+            ->add('trainer.name')
         ;
     }
 
@@ -51,10 +47,12 @@ class NpcAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->addIdentifier('id')
             ->add('name')
-            ->add('master')
-            ->add('arena')
-            ->add('zone')
+            ->add('profession')
+            ->add('text')
+            ->add('objects.name')
+            ->add('trainer.name')
         ;
     }
 
@@ -63,9 +61,10 @@ class NpcAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('name')
-            ->add('master')
-            ->add('arena')
-            ->add('zone')
+            ->add('profession')
+            ->add('text')
+            ->add('objects.name')
+            ->add('trainer.name')
         ;
     }
 }

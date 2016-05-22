@@ -18,6 +18,16 @@ class StrongAgainstAdmin extends AbstractAdmin
                 'label' => 'Modificateur',
                 'scale' => 2
             ))
+            ->add('firstType', 'entity', array(
+                'label' => 'Type Attaquant',
+                'class' => 'RaufletBundle\Entity\Type',
+                'choice_label' => 'name',
+            ))
+            ->add('secondType', 'entity', array(
+                'label' => 'Type Défenseur',
+                'class' => 'RaufletBundle\Entity\Type',
+                'choice_label' => 'name'
+            ))
         ;
     }
 
@@ -26,6 +36,8 @@ class StrongAgainstAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('modifier')
+            ->add('firstType.name')
+            ->add('secondType.name')
         ;
     }
 
@@ -33,7 +45,10 @@ class StrongAgainstAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('modifier')
+            ->addIdentifier('id')
+            ->add('modifier')
+            ->add('firstType.name')
+            ->add('secondType.name')
         ;
     }
 
@@ -42,6 +57,8 @@ class StrongAgainstAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('modifier')
+            ->add('firstType.name')
+            ->add('secondType.name')
         ;
     }
 }

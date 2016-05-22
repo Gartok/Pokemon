@@ -76,13 +76,6 @@ class Badge
     {
         return $this->name;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->zone = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Set master
@@ -130,30 +123,6 @@ class Badge
     public function getArena()
     {
         return $this->arena;
-    }
-
-    /**
-     * Add zone
-     *
-     * @param \RaufletBundle\Entity\Zone $zone
-     *
-     * @return Badge
-     */
-    public function addZone(\RaufletBundle\Entity\Zone $zone)
-    {
-        $this->zone[] = $zone;
-
-        return $this;
-    }
-
-    /**
-     * Remove zone
-     *
-     * @param \RaufletBundle\Entity\Zone $zone
-     */
-    public function removeZone(\RaufletBundle\Entity\Zone $zone)
-    {
-        $this->zone->removeElement($zone);
     }
 
     /**

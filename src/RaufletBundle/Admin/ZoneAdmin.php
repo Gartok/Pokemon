@@ -36,9 +36,9 @@ class ZoneAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('obtention')
-            ->add('trainer')
-            ->add('badge')
+            ->add('name')
+            ->add('positions')
+            ->add('badges.name')
         ;
     }
 
@@ -46,9 +46,10 @@ class ZoneAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('obtention')
-            ->add('trainer')
-            ->add('badge')
+            ->addIdentifier('id')
+            ->add('name')
+            ->add('positions')
+            ->add('badges.name')
         ;
     }
 
@@ -56,9 +57,9 @@ class ZoneAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('obtention')
-            ->add('trainer')
-            ->add('badge')
+            ->add('name')
+            ->add('positions')
+            ->add('badges.name')
         ;
     }
 }
