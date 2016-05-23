@@ -4,19 +4,27 @@
 namespace RaufletBundle\Admin;
 
 use Sonata\AdminBundle\Admin\AbstractAdmin;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 
-class TypeAdmin extends AbstractAdmin
+class SqlRequestAdmin extends AbstractAdmin
 {
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection->add('request');
+        $collection->remove('list');
+
+    }
+
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', 'text', array(
-                'label' => 'Label du type'
+            ->add('value', 'text', array(
+                'label' => 'Requête SQL'
             ))
         ;
     }

@@ -292,6 +292,8 @@ class PokemonType
     {
         $this->types[] = $type;
 
+        $type->addPokemonType($this);
+
         return $this;
     }
 
@@ -302,6 +304,8 @@ class PokemonType
      */
     public function removeType(\RaufletBundle\Entity\Type $type)
     {
+        $type->removePokemonType($this);
+
         $this->types->removeElement($type);
     }
 

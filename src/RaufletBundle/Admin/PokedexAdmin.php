@@ -4,6 +4,7 @@
 namespace RaufletBundle\Admin;
 
 use Sonata\AdminBundle\Admin\AbstractAdmin;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -11,11 +12,10 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 
 class PokedexAdmin extends AbstractAdmin
 {
-    // Fields to be shown on create/edit forms
-    protected function configureFormFields(FormMapper $formMapper)
+
+    protected function configureRoutes(RouteCollection $collection)
     {
-        $formMapper
-        ;
+        $collection->remove('create');
     }
 
     // Fields to be shown on filter forms

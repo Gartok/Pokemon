@@ -31,6 +31,7 @@ class TrainerLoadData extends AbstractFixture implements FixtureInterface, Order
         $object->setName('Pierre');
         $object->setEmail('pierre@champion.com');
         $object->setEnabled(true);
+        $object->setRoles(array('ROLE_USER'));
 
         $manager->persist($object);
 
@@ -43,6 +44,7 @@ class TrainerLoadData extends AbstractFixture implements FixtureInterface, Order
         $object->setName('Ondine');
         $object->setEmail('ondine@pokemon.com');
         $object->setEnabled(true);
+        $object->setRoles(array('ROLE_USER'));
 
         $manager->persist($object);
         $this->addReference("trainer2", $object);
@@ -65,6 +67,7 @@ class TrainerLoadData extends AbstractFixture implements FixtureInterface, Order
         $object->setName('Major');
         $object->setEmail('majorbob@pokemon.com');
         $object->setEnabled(true);
+        $object->setRoles(array('ROLE_USER'));
 
         $manager->persist($object);
         $this->addReference("trainer3", $object);
@@ -87,6 +90,7 @@ class TrainerLoadData extends AbstractFixture implements FixtureInterface, Order
         $object->setName('Auguste');
         $object->setEmail('auguste@pokemon.com');
         $object->setEnabled(true);
+        $object->setRoles(array('ROLE_USER'));
 
         $manager->persist($object);
         $this->addReference("trainer7", $object);

@@ -20,42 +20,6 @@ class PokemonsTypeLoadData extends AbstractFixture implements FixtureInterface, 
 
     public function load(ObjectManager $manager)
     {
-        $object = new PokemonType();
-
-        $object->setName('Bulbizarre');
-        $object->setLife(45);
-        $object->setAttack(49);
-        $object->setDefence(49);
-        $object->setAttackSpe(65);
-        $object->setDefenceSpe(65);
-        $object->setSpeed(45);
-        $object->addEvolution('pokemontype2');
-        $object->addPokedex('pokedex1');
-        $object->addType('type8');
-        $object->addType('zone1');
-
-        $manager->persist($object);
-
-        $this->addReference("pokemontype1", $object);
-
-        $object = new PokemonType();
-
-        $object->setName('Herbizarre');
-        $object->setLife(60);
-        $object->setAttack(62);
-        $object->setDefence(63);
-        $object->setAttackSpe(80);
-        $object->setDefenceSpe(80);
-        $object->setSpeed(60);
-        $object->addEvolution('pokemontype3');
-        $object->addPokedex('pokedex2');
-        $object->addType('type8');
-        $object->addType('type9');
-        $object->addZone('zone1');
-
-        $manager->persist($object);
-
-        $this->addReference("pokemontype2", $object);
 
         $object = new PokemonType();
 
@@ -66,33 +30,34 @@ class PokemonsTypeLoadData extends AbstractFixture implements FixtureInterface, 
         $object->setAttackSpe(100);
         $object->setDefenceSpe(100);
         $object->setSpeed(80);
-        $object->addPokedex('pokedex1');
-        $object->addType('type8');
-        $object->addType('type9');
-        $object->addZone('zone1');
-        $object->addPokedex('pokedex3');
+        $object->addType($this->getReference('type8'));
+        $object->addType($this->getReference('type9'));
+//        $object->addZone($this->getReference('zone1'));
+        $object->setPokedex($this->getReference('pokedex3'));
 
         $manager->persist($object);
 
         $this->addReference("pokemontype3", $object);
 
+
         $object = new PokemonType();
 
-        $object->setName('Salamèche');
-        $object->setLife(39);
-        $object->setAttack(52);
-        $object->setDefence(43);
-        $object->setAttackSpe(60);
-        $object->setDefenceSpe(50);
-        $object->setSpeed(65);
-        $object->addType('type5');
-        $object->addEvolution('pokemontype5');
-        $object->addZone('zone2');
-        $object->addPokedex('pokedex4');
+        $object->setName('Herbizarre');
+        $object->setLife(60);
+        $object->setAttack(62);
+        $object->setDefence(63);
+        $object->setAttackSpe(80);
+        $object->setDefenceSpe(80);
+        $object->setSpeed(60);
+        $object->addEvolution($this->getReference('pokemontype3'));
+        $object->setPokedex($this->getReference('pokedex2'));
+        $object->addType($this->getReference('type8'));
+        $object->addType($this->getReference('type9'));
+//        $object->addZone($this->getReference('zone1'));
 
         $manager->persist($object);
 
-        $this->addReference("pokemontype4", $object);
+        $this->addReference("pokemontype2", $object);
 
         $object = new PokemonType();
 
@@ -103,13 +68,51 @@ class PokemonsTypeLoadData extends AbstractFixture implements FixtureInterface, 
         $object->setAttackSpe(80);
         $object->setDefenceSpe(65);
         $object->setSpeed(80);
-        $object->addType('type5');
-        $object->addZone('zone2');
-        $object->addPokedex('pokedex5');
+        $object->addType($this->getReference('type5'));
+//        $object->addZone($this->getReference('zone2'));
+        $object->setPokedex($this->getReference('pokedex5'));
 
         $manager->persist($object);
 
         $this->addReference("pokemontype5", $object);
+
+        $object = new PokemonType();
+
+        $object->setName('Bulbizarre');
+        $object->setLife(45);
+        $object->setAttack(49);
+        $object->setDefence(49);
+        $object->setAttackSpe(65);
+        $object->setDefenceSpe(65);
+        $object->setSpeed(45);
+        $object->addEvolution($this->getReference('pokemontype2'));
+        $object->setPokedex($this->getReference('pokedex1'));
+        $object->addType($this->getReference('type8'));
+//        $object->addType($this->getReference('zone1'));
+
+        $manager->persist($object);
+
+        $this->addReference("pokemontype1", $object);
+
+        $object = new PokemonType();
+
+        $object->setName('Salamèche');
+        $object->setLife(39);
+        $object->setAttack(52);
+        $object->setDefence(43);
+        $object->setAttackSpe(60);
+        $object->setDefenceSpe(50);
+        $object->setSpeed(65);
+        $object->addType($this->getReference('type5'));
+        $object->addEvolution($this->getReference('pokemontype5'));
+//        $object->addZone($this->getReference('zone2'));
+        $object->setPokedex($this->getReference('pokedex4'));
+
+        $manager->persist($object);
+
+        $this->addReference("pokemontype4", $object);
+
+
 
         $manager->flush();
     }

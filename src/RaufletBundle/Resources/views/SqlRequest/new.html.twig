@@ -1,0 +1,77 @@
+{% extends base_template %}
+
+
+{% block title %}
+        {{ "title_create"|trans({}, 'SonataAdminBundle') }}
+{% endblock %}
+
+{% block navbar_title %}
+    {{ block('title') }}
+{% endblock %}
+
+{% block actions %}
+    {% include 'SonataAdminBundle:CRUD:action_buttons.html.twig' %}
+{% endblock %}
+
+{% block tab_menu %}{{ knp_menu_render(admin.sidemenu(action), {'currentClass' : 'active', 'template': sonata_admin.adminPool.getTemplate('tab_menu_template')}, 'twig') }}{% endblock %}
+
+{% use 'SonataAdminBundle:CRUD:base_edit_form.html.twig' with form as parentForm %}
+{% import "SonataAdminBundle:CRUD:base_edit_form_macro.html.twig" as form_helper %}
+
+{% block form %}
+    <link href="{{ asset('bundles/rauflet/css/request.css') }}" rel="stylesheet">
+
+    {#{{ block('parentForm') }}#}
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header"></div>
+            <div class="box-body">
+                <div class="sonata-ba-collapsed-fields">
+                    <div id="sonata-ba-field-container-s5742bef889adc_name" class="form-group">
+                        <label class="control-label required" for="s5742bef889adc_name">Requête</label>
+                        <div class="sonata-ba-field sonata-ba-field-standard-natural">
+                            <input id="request" class=" form-control"
+                                   type="text" required="required" name="form[request]"></input>
+                        </div>
+                    </div>
+                    <div id="sonata-ba-field-container-s5742bef889adc_quantity" class="form-group"></div>
+                    <div id="sonata-ba-field-container-s5742bef889adc_type" class="form-group"></div>
+                    <div id="sonata-ba-field-container-s5742bef889adc_npc" class="form-group"></div>
+                </div>
+            </div>
+        </div>
+        <a class="btn btn-success" onclick="executeSQl();">Lancer la requête</a>
+
+        <div>
+            <textarea id="result" class="input form-control " type="text" required="required"></textarea>
+        </div>
+    </div>
+
+    {#<button type="submit" name="btn_update"><i class="fa fa-save"></i> {{ 'btn_update'|trans({}, 'SonataAdminBundle') }}</button>#}
+
+
+
+
+    <script>
+        function executeSQl(){
+            var value = $('input[name="form[request]"]').val();
+            var path = "{{ path('request_database') }}";
+
+            if(value != null){
+
+                $.ajax({
+                    url: path,
+                    type: 'POST',
+                    data: {'request': value},
+                    dataType: 'json',
+                    success: function(json) {
+                            $('#result').val(json['result']);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        $('#result').val('Erreur SQL ....');
+                    }
+                });
+            }
+        }
+    </script>
+{% endblock %}

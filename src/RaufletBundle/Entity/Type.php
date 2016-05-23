@@ -29,6 +29,13 @@ class Type
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="PokemonType", mappedBy="types")
+     */
+    private $pokemonTypes;
+
+    /**
      * Get id
      *
      * @return int
@@ -60,5 +67,46 @@ class Type
     public function getName()
     {
         return $this->name;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->pokemonTypes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add pokemonType
+     *
+     * @param \RaufletBundle\Entity\PokemonType $pokemonType
+     *
+     * @return Type
+     */
+    public function addPokemonType(\RaufletBundle\Entity\PokemonType $pokemonType)
+    {
+        $this->pokemonTypes[] = $pokemonType;
+
+        return $this;
+    }
+
+    /**
+     * Remove pokemonType
+     *
+     * @param \RaufletBundle\Entity\PokemonType $pokemonType
+     */
+    public function removePokemonType(\RaufletBundle\Entity\PokemonType $pokemonType)
+    {
+        $this->pokemonTypes->removeElement($pokemonType);
+    }
+
+    /**
+     * Get pokemonTypes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPokemonTypes()
+    {
+        return $this->pokemonTypes;
     }
 }

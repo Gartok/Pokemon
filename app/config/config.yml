@@ -87,12 +87,88 @@ sonata_block:
         sonata.user.block.account: # used to display menu option (login option)
         sonata.block.service.text: # used to if you plan to use Sonata user routes
 
+sonata_admin:
+    title: Pokemon
+    title_logo: /bundles/rauflet/images/logo.png
+    dashboard:
+        blocks:
+            -
+                position: left
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [sonata_page1, sonata_page4, sonata_page5]
+            -
+                position: right
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [sonata_page2, sonata_page3]
+            -
+                position: center
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [sonata_page6]
 
+        groups:
+            sonata_page1:
+                label: "Gestion des Objets"
+                items:
+                    - app.admin.objects
+                    - app.admin.objects.type
+
+            sonata_page2:
+                label: "Gestion des Pokemons"
+                items:
+                    - app.admin.pokedex
+                    - app.admin.pokemons
+                    - app.admin.pokemons.type
+
+            sonata_page3:
+                label: "Gestion des Types"
+                items:
+                    - app.admin.attack
+                    - app.admin.type
+                    - app.admin.strong.against
+                    - app.admin.weak.against
+
+            sonata_page4:
+                label: "Gestion des Dresseurs"
+                items:
+                    - app.admin.arena
+                    - app.admin.badge
+                    - app.admin.npc
+                    - sonata.user.admin.user
+                    - app.admin.win
+
+            sonata_page5:
+                label: "Gestion de la carte"
+                items:
+                    - app.admin.position
+                    - app.admin.zone
+
+            sonata_page6:
+                label: "Administration"
+                items:
+                    - app.admin.request.sql
 
 sonata_user:
     security_acl: true
     manager_type: orm # can be orm or mongodb
+    profile:
+        # Profile show page is a dashboard as in SonataAdminBundle
+        dashboard:
+            blocks:
+                - { position: left, type: sonata.block.service.text, settings: { content: "<h2>Welcome!</h2> This is a sample user profile dashboard, feel free to override it in the configuration! Want to make this text dynamic? For instance display the user's name? Create a dedicated block and edit the configuration!"} }
+#                - { position: left, type: sonata.order.block.recent_orders, settings: { title: Recent Orders, number: 5, mode: public }}
+#                - { position: right, type: sonata.timeline.block.timeline, settings: { max_per_page: 15 }}
+#                - { position: right, type: sonata.news.block.recent_posts, settings: { title: Recent Posts, number: 5, mode: public }}
+#                - { position: right, type: sonata.news.block.recent_comments, settings: { title: Recent Comments, number: 5, mode: public }}
 
+        menu:
+            - { route: 'sonata_user_profile_show', label: 'sonata_profile_title', domain: 'SonataUserBundle'}
+#            - { route: 'sonata_user_profile_edit', label: 'link_edit_profile', domain: 'SonataUserBundle'}
+#            - { route: 'sonata_customer_addresses', label: 'link_list_addresses', domain: 'SonataCustomerBundle'}
+#            - { route: 'sonata_user_profile_edit_authentication', label: 'link_edit_authentication', domain: 'SonataUserBundle'}
+#            - { route: 'sonata_order_index', label: 'order_list', domain: 'SonataOrderBundle'}
 
 fos_user:
     db_driver:      orm # can be orm or odm
