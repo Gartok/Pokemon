@@ -1,0 +1,106 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Générateur de Pokémon</h3>
+        </div>
+    </div>
+
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+        <div class="row">
+            <div class="col-xs-12 col-md-4">
+                <label class="control-label">Dresseur : {{ app.user.username }}</label>
+            </div>
+            <div class="col-xs-12 col-md-4">
+                <label class="control-label">Type : {{ pokemonType.name }}</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-4">
+                {{ form_label(form.surname, form.surname, {'label_attr': {'class': 'control-label required'}}) }}
+                {{ form_widget(form.surname, {'attr': {'class': 'form-control', 'value' : pokemonType.name  } }) }}
+                {{ form_errors(form.surname, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="col-xs-12 col-md-2">
+                {{ form_label(form.level, form.level, {'label_attr': {'class': 'control-label required'}}) }}
+                {{ form_widget(form.level, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.level, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <label class="control-label">Date de Capture :</label>
+                {{ form_widget(form.catchDate, {'attr': {'class': ''}}) }}
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="header-align-left"><h4>Attaques : </h4></div>
+            <div class="row">
+                <div class="container-generator col-xs-12 col-md-6 border-attack">
+                    <div class="row">
+                        Attaque 1 :
+                    </div>
+                    <div class="row">
+                        <ul id="attack1" class="attack connectedSortable attack form-control "></ul>
+                    </div>
+                </div>
+                <div class="container-generator col-xs-12 col-md-6 border-attack">
+                    <div class="row">
+                        Attaque 2 :
+                    </div>
+                    <div class="row">
+                        <ul id="attack2" class="attack connectedSortable attack form-control "></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="container-generator col-xs-12 col-md-6 border-attack">
+                    <div class="row">
+                        Attaque 3 :
+                    </div>
+                    <div class="row">
+                        <ul id="attack3" class="attack connectedSortable attack form-control "></ul>
+                    </div>
+                </div>
+                <div class="container-generator col-xs-12 col-md-6 border-attack">
+                    <div class="row">
+                        Attaque 4 :
+                    </div>
+                    <div class="row">
+                        <ul id="attack4" class="attack connectedSortable attack form-control "></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <div class="row text-center">
+                <div class="attack-container"></div>
+                <label class="control-label required" for="s5742bef889adc_name">Attaques disponibles:</label>
+                <ul id="attacklist" class="form-control connectedSortable">
+                    {% for attack in attacks %}
+                        <li id="{{ attack.id }}" class="ui-state-default" name="{{ attack.name }}">{{ attack.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+                {{ form_widget(form.firstAttack, {'attr': {'class': 'form-control hidden'}}) }}
+                {{ form_widget(form.secondAttack, {'attr': {'class': 'form-control hidden'}}) }}
+                {{ form_widget(form.thirdAttack, {'attr': {'class': 'form-control hidden'}}) }}
+                {{ form_widget(form.fourthAttack, {'attr': {'class': 'form-control hidden'}}) }}
+
+
+        <div class="row text-center">
+            {{ form_row(form.save) }}
+        </div>
+
+        {{ form_row(form._token) }}
+    {{ form_end(form, {'render_rest': false})  }}
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script src="{{ asset('bundles/rauflet/js/sortable-pokemon.js') }}"></script>
+    {% endblock %}
+{% endblock %}

@@ -43,12 +43,7 @@ class Npc
     private $text;
 
     /**
-     * @ORM\OneToMany(targetEntity="Objects", mappedBy="npc")
-     */
-    private $objects;
-
-    /**
-     * @ORM\OneToOne(targetEntity="Trainer", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="\Application\Sonata\UserBundle\Entity\User", cascade={"persist"})
      */
     private $trainer;
 
@@ -178,11 +173,11 @@ class Npc
     /**
      * Set trainer
      *
-     * @param \RaufletBundle\Entity\Trainer $trainer
+     * @param \Application\Sonata\UserBundle\Entity $trainer
      *
      * @return Npc
      */
-    public function setTrainer(\RaufletBundle\Entity\Trainer $trainer = null)
+    public function setTrainer(\Application\Sonata\UserBundle\Entity\User $trainer = null)
     {
         $this->trainer = $trainer;
 
@@ -192,7 +187,7 @@ class Npc
     /**
      * Get trainer
      *
-     * @return \RaufletBundle\Entity\Trainer
+     * @return \Application\Sonata\UserBundle\Entity
      */
     public function getTrainer()
     {

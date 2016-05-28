@@ -71,7 +71,7 @@ class PokemonType
     private $life;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Type")
+     * @ORM\ManyToMany(targetEntity="Type", inversedBy="pokemonTypes")
      */
     private $types;
 

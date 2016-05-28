@@ -21,7 +21,6 @@
 {% block form %}
     <link href="{{ asset('bundles/rauflet/css/request.css') }}" rel="stylesheet">
 
-    {#{{ block('parentForm') }}#}
     <div class="col-md-12">
         <div class="box box-primary">
             <div class="box-header"></div>
@@ -47,11 +46,6 @@
         </div>
     </div>
 
-    {#<button type="submit" name="btn_update"><i class="fa fa-save"></i> {{ 'btn_update'|trans({}, 'SonataAdminBundle') }}</button>#}
-
-
-
-
     <script>
         function executeSQl(){
             var value = $('input[name="form[request]"]').val();
@@ -65,7 +59,16 @@
                     data: {'request': value},
                     dataType: 'json',
                     success: function(json) {
-                            $('#result').val(json['result']);
+                        var value = "";
+
+                        $.each(JSON.parse(json['result']), function(i, item) {
+                            value += "=============== Object " + (i + 1) + " : =============== \n"
+                            for (var key in item) {
+                                value += key + " = " + item[key] + '\n';
+                            }
+                        });
+
+                        $('#result').val(value);
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
                         $('#result').val('Erreur SQL ....');

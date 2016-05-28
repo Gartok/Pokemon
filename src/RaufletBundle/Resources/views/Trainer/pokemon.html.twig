@@ -1,0 +1,79 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <!-- Title -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Pokemons</h3>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- Page Features -->
+    <div class="row text-center">
+
+    {% for pokemon in pokemons %}
+        <div class="col-md-6 col-sm-6 hero-feature">
+            <div class="thumbnail">
+                {#<img src="{{ asset('bundles/rauflet/images/pikachu.jpg') }}" alt="">#}
+                <div class="caption">
+                    <h3>{{ pokemon.surname }}</h3>
+                    <hr />
+                    <div class="row">
+                        <div class="col-xs-6">Type : {{ pokemon.type.name }}</div>
+                        <div class="col-xs-6">Niveau : {{ pokemon.level }}</div>
+                    </div>
+                    <hr />
+                    <div class="header-align-left"><h4>Attaques : </h4></div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6 border-attack">
+                            <div class="row">
+                                <div class="col-xs-6">{{ pokemon.firstAttack.name }}</div>
+                                <div class="col-xs-6">Type : {{ pokemon.firstAttack.type.name }}</div>
+                                    </div>
+                            <div class="row">
+                                <div class="col-xs-6">Puissance : {{ pokemon.firstAttack.power }}</div>
+                                <div class="col-xs-6">Précision : {{ pokemon.firstAttack.accurate }}</div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 border-attack">
+                            <div class="row">
+                                <div class="col-xs-6">{{ pokemon.secondAttack.name }}</div>
+                                <div class="col-xs-6">Type : {{ pokemon.secondAttack.type.name }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">Puissance : {{ pokemon.secondAttack.power }}</div>
+                                <div class="col-xs-6">Précision : {{ pokemon.secondAttack.accurate }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6 border-attack">
+                            <div class="row">
+                                <div class="col-xs-6">{{ pokemon.thirdAttack.name }}</div>
+                                <div class="col-xs-6">Type : {{ pokemon.thirdAttack.type.name }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">Puissance : {{ pokemon.thirdAttack.power }}</div>
+                                <div class="col-xs-6">Précision : {{ pokemon.thirdAttack.accurate }}</div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 border-attack">
+                            <div class="row">
+                                <div class="col-xs-6">{{ pokemon.fourthAttack.name }}</div>
+                                <div class="col-xs-6">Type : {{ pokemon.fourthAttack.type.name }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">Puissance : {{ pokemon.fourthAttack.power }}</div>
+                                <div class="col-xs-6">Précision : {{ pokemon.fourthAttack.accurate }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        <a href="#" class="btn btn-primary more-info-but">Plus d'information</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

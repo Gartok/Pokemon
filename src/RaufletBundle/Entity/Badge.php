@@ -29,7 +29,7 @@ class Badge
     private $name;
 
     /**
-     * @ORM\OneToOne(targetEntity="Trainer")
+     * @ORM\OneToOne(targetEntity="\Application\Sonata\UserBundle\Entity\User")
      */
     private $master;
 
@@ -39,7 +39,7 @@ class Badge
     private $arena;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Zone", inversedBy="badges")
+     * @ORM\ManyToOne(targetEntity="Zone")
      */
     private $zone;
 
@@ -80,11 +80,11 @@ class Badge
     /**
      * Set master
      *
-     * @param \RaufletBundle\Entity\Trainer $master
+     * @param \Application\Sonata\UserBundle\Entity\User $master
      *
      * @return Badge
      */
-    public function setMaster(\RaufletBundle\Entity\Trainer $master = null)
+    public function setMaster(\Application\Sonata\UserBundle\Entity\User $master = null)
     {
         $this->master = $master;
 
@@ -94,7 +94,7 @@ class Badge
     /**
      * Get master
      *
-     * @return \RaufletBundle\Entity\Trainer
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getMaster()
     {

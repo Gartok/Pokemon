@@ -24,6 +24,10 @@ class AttackAdmin extends AbstractAdmin
             ->add('accurate', 'number', array(
                 'label' => 'Precision'
             ))
+            ->add('type', 'entity', array(
+                'class' => 'RaufletBundle\Entity\Type',
+                'choice_label' => 'name'
+            ))
         ;
     }
 
@@ -34,6 +38,7 @@ class AttackAdmin extends AbstractAdmin
             ->add('name')
             ->add('power')
             ->add('accurate')
+            ->add('type.name')
         ;
     }
 
@@ -45,6 +50,7 @@ class AttackAdmin extends AbstractAdmin
             ->add('name')
             ->add('power')
             ->add('accurate')
+            ->add('type.name')
         ;
     }
 
@@ -55,6 +61,7 @@ class AttackAdmin extends AbstractAdmin
             ->add('name')
             ->add('power')
             ->add('accurate')
+            ->add('type.name')
         ;
     }
 }

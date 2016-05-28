@@ -25,7 +25,7 @@ class NpcAdmin extends AbstractAdmin
                 'label' => 'Texte'
             ))
             ->add('trainer', 'entity', array(
-                'class' => 'RaufletBundle\Entity\Trainer',
+                'class' => 'Application\Sonata\UserBundle\Entity\User',
                 'choice_label' => 'name'
             ))
         ;

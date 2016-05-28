@@ -1,15 +1,15 @@
 <?php
 namespace AppBundle\DataFixtures\ORM;
 
+use Application\Sonata\UserBundle\Entity\User;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use RaufletBundle\Entity\Trainer;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class TrainerLoadData extends AbstractFixture implements FixtureInterface, OrderedFixtureInterface
+class UserLoadData extends AbstractFixture implements FixtureInterface, OrderedFixtureInterface
 {
 
     /**
@@ -24,7 +24,7 @@ class TrainerLoadData extends AbstractFixture implements FixtureInterface, Order
 
     public function load(ObjectManager $manager)
     {
-        $object = new Trainer();
+        $object = new User();
 
         $object->setUsername('Pierre');
         $object->setPlainPassword('pierre');
@@ -37,7 +37,7 @@ class TrainerLoadData extends AbstractFixture implements FixtureInterface, Order
 
         $this->addReference("trainer1", $object);
 
-        $object = new Trainer();
+        $object = new User();
 
         $object->setUsername('Ondine');
         $object->setPlainPassword('ondine');
@@ -49,7 +49,7 @@ class TrainerLoadData extends AbstractFixture implements FixtureInterface, Order
         $manager->persist($object);
         $this->addReference("trainer2", $object);
 
-        $object = new Trainer();
+        $object = new User();
 
         $object->setUsername('sacha');
         $object->setPlainPassword('sacha');
@@ -60,7 +60,7 @@ class TrainerLoadData extends AbstractFixture implements FixtureInterface, Order
         $manager->persist($object);
         $this->addReference("trainer4", $object);
 
-        $object = new Trainer();
+        $object = new User();
 
         $object->setUsername('major');
         $object->setPlainPassword('major');
@@ -72,7 +72,7 @@ class TrainerLoadData extends AbstractFixture implements FixtureInterface, Order
         $manager->persist($object);
         $this->addReference("trainer3", $object);
 
-        $object = new Trainer();
+        $object = new User();
 
         $object->setUsername('morgane');
         $object->setPlainPassword('morgane');
@@ -83,7 +83,7 @@ class TrainerLoadData extends AbstractFixture implements FixtureInterface, Order
         $manager->persist($object);
         $this->addReference("trainer6", $object);
 
-        $object = new Trainer();
+        $object = new User();
 
         $object->setUsername('auguste');
         $object->setPlainPassword('auguste');

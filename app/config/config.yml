@@ -8,7 +8,8 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
+    sonata.user.admin.user.class: RaufletBundle\Admin\UserAdmin
 
 framework:
     #esi:             ~
@@ -173,7 +174,7 @@ sonata_user:
 fos_user:
     db_driver:      orm # can be orm or odm
     firewall_name:  main
-    user_class:     RaufletBundle\Entity\Trainer
+    user_class:     Application\Sonata\UserBundle\Entity\User
 
     group:
         group_class:   Sonata\UserBundle\Entity\BaseGroup

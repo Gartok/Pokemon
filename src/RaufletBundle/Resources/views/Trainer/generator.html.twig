@@ -1,0 +1,126 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Générateur de Type de Pokémon</h3>
+        </div>
+    </div>
+
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+    <div class="row text-center">
+
+    <div class="row">
+        <div class="col-xs-12 col-md-4">
+            {{ form_label(form.name, form.name, {'label_attr': {'class': 'control-label required'}}) }}
+            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.attack, {'attr': {'class': 'form-control'}}) }}
+
+        </div>
+        <div class="col-xs-12 col-md-4">
+            {{ form_label(form.life, form.life, {'label_attr': {'class': 'control-label required'}}) }}
+            {{ form_widget(form.life, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.life, {'attr': {'class': 'form-control'}}) }}
+
+        </div>
+        <div class="col-xs-12 col-md-4">
+            {{ form_label(form.speed, form.speed, {'label_attr': {'class': 'control-label required'}}) }}
+            {{ form_widget(form.speed, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.speed, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            {{ form_label(form.attack, form.attack, {'label_attr': {'class': 'control-label required'}}) }}
+            {{ form_widget(form.attack, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.attack, {'attr': {'class': 'form-control'}}) }}
+
+        </div>
+        <div class="col-xs-12 col-md-6">
+            {{ form_label(form.attackSpe, form.attackSpe, {'label_attr': {'class': 'control-label required'}}) }}
+            {{ form_widget(form.attackSpe, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.attackSpe, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            {{ form_label(form.defence, form.defence, {'label_attr': {'class': 'control-label required'}}) }}
+            {{ form_widget(form.defence, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-xs-12 col-md-6">
+            {{ form_label(form.defenceSpe, form.defenceSpe, {'label_attr': {'class': 'control-label required'}}) }}
+            {{ form_widget(form.defenceSpe, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div class="row">
+                <label class="control-label required" for="s5742bef889adc_name">Type de Pokémon Disponible :</label>
+            </div>
+            <div class="row type-list">
+                    <ul id="sortable1" class="connectedSortable">
+                    {% for type in types %}
+                        <li id="{{ type.id }}" class="ui-state-default" name="{{ type.name }}">{{ type.name }}</li>
+                    {% endfor %}
+                    </ul>
+           </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="row">
+                <label class="control-label required" for="s5742bef889adc_name">Type de Pokémon Sélectionner :</label>
+            </div>
+            <div class="row type-list">
+                    <ul id="sortable2" class="connectedSortable">
+
+                    </ul>
+            </div>
+
+            {{ form_widget(form.types, {'attr': {'class': 'form-control hidden'}}) }}
+
+        </div>
+
+
+    <div class="attack-container col-xs-12 col-md-6 col-md-offset-3">
+        {{ form_row(form.save) }}
+    </div>
+    {{ form_end(form) }}
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script>
+            $(function() {
+                $( "#sortable1, #sortable2" ).sortable({
+                    update: function(event, ui) {
+                        if (this.id == "sortable2") {
+                            $('#pokemon_type_types option[value='+ $(ui.item).attr('id') +']').prop('selected', true)
+                        } else {
+                            $('#pokemon_type_types option[value='+ $(ui.item).attr('id') +']').prop('selected', false)
+                        }
+                    }
+                })
+            });
+            $(function() {
+                $( "#sortable1, #sortable2" ).sortable({
+                    connectWith: ".connectedSortable"
+                }).disableSelection();
+            });
+        </script>
+        <script type="text/javascript">
+            var typeCount = '{{ form.types | length }}';
+
+            jQuery(document).ready(function() {
+                jQuery('#add-another-type').click(function() {
+
+
+                    return false;
+                });
+            })
+        </script>
+    {% endblock %}
+{% endblock %}

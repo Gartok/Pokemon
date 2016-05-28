@@ -22,7 +22,7 @@ class ObjectsLoadData extends AbstractFixture implements FixtureInterface, Order
 
         $object->setName('Pierre Eau');
         $object->setQuantity(10);
-        $object->setNpc($this->getReference('npc1'));
+        $object->setTrainer($this->getReference('trainer1'));
         $object->setType($this->getReference('objecttype1'));
         $manager->persist($object);
 
@@ -33,7 +33,7 @@ class ObjectsLoadData extends AbstractFixture implements FixtureInterface, Order
         $object->setName('Pierre Feu');
         $object->setQuantity(10);
         $object->setType($this->getReference('objecttype1'));
-        $object->setNpc($this->getReference('npc2'));
+        $object->setTrainer($this->getReference('trainer2'));
         $manager->persist($object);
 
         $this->addReference("object2", $object);
@@ -42,7 +42,7 @@ class ObjectsLoadData extends AbstractFixture implements FixtureInterface, Order
 
         $object->setName('Pierre Foudre');
         $object->setQuantity(10);
-        $object->setNpc($this->getReference('npc3'));
+        $object->setTrainer($this->getReference('trainer3'));
         $object->setType($this->getReference('objecttype1'));
         $manager->persist($object);
 
@@ -53,7 +53,7 @@ class ObjectsLoadData extends AbstractFixture implements FixtureInterface, Order
         $object->setName('Pierre Lune');
         $object->setQuantity(10);
         $object->setType($this->getReference('objecttype1'));
-        $object->setNpc($this->getReference('npc1'));
+        $object->setTrainer($this->getReference('trainer4'));
         $manager->persist($object);
 
         $this->addReference("object4", $object);
@@ -63,7 +63,7 @@ class ObjectsLoadData extends AbstractFixture implements FixtureInterface, Order
         $object->setName('Antidote');
         $object->setQuantity(10);
         $object->setType($this->getReference('objecttype2'));
-        $object->setNpc($this->getReference('npc1'));
+        $object->setTrainer($this->getReference('trainer1'));
         $manager->persist($object);
 
         $this->addReference("object5", $object);
@@ -71,7 +71,7 @@ class ObjectsLoadData extends AbstractFixture implements FixtureInterface, Order
         $object->setName('CS01 Coupe');
         $object->setQuantity(10);
         $object->setType($this->getReference('objecttype4'));
-        $object->setNpc($this->getReference('npc2'));
+        $object->setTrainer($this->getReference('trainer2'));
         $manager->persist($object);
 
         $this->addReference("object6", $object);

@@ -29,7 +29,7 @@ class Win
     private $obtention;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Trainer", inversedBy="wins")
+     * @ORM\ManyToOne(targetEntity="\Application\Sonata\UserBundle\Entity\User", inversedBy="wins")
      * @ORM\JoinColumn(nullable=false)
      */
     private $trainer;
@@ -76,11 +76,11 @@ class Win
     /**
      * Set trainer
      *
-     * @param \RaufletBundle\Entity\Trainer $trainer
+     * @param \Application\Sonata\UserBundle\Entity\User $trainer
      *
      * @return Win
      */
-    public function setTrainer(\RaufletBundle\Entity\Trainer $trainer)
+    public function setTrainer(\Application\Sonata\UserBundle\Entity\User $trainer)
     {
         $this->trainer = $trainer;
 
@@ -90,7 +90,7 @@ class Win
     /**
      * Get trainer
      *
-     * @return \RaufletBundle\Entity\Trainer
+     * @return \Application\Sonata\UserBundle\Entity
      */
     public function getTrainer()
     {

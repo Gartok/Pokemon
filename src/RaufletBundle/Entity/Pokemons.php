@@ -43,33 +43,33 @@ class Pokemons
     private $catchDate;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Trainer", inversedBy="pokemons")
+     * @ORM\ManyToOne(targetEntity="\Application\Sonata\UserBundle\Entity\User", inversedBy="pokemons")
      * @ORM\JoinColumn(nullable=false)
      */
     private $trainer;
 
     /**
-     * @ORM\OneToOne(targetEntity="Attack")
+     * @ORM\ManyToOne(targetEntity="Attack")
      */
     private $firstAttack;
 
     /**
-     * @ORM\OneToOne(targetEntity="Attack")
+     * @ORM\ManyToOne(targetEntity="Attack")
      */
     private $secondAttack;
 
     /**
-     * @ORM\OneToOne(targetEntity="Attack")
+     * @ORM\ManyToOne(targetEntity="Attack")
      */
     private $thirdAttack;
 
     /**
-     * @ORM\OneToOne(targetEntity="Attack")
+     * @ORM\ManyToOne(targetEntity="Attack")
      */
     private $fourthAttack;
 
     /**
-     * @ORM\OneToOne(targetEntity="PokemonType")
+     * @ORM\ManyToOne(targetEntity="PokemonType")
      */
     private $type;
 
@@ -158,11 +158,11 @@ class Pokemons
     /**
      * Set trainer
      *
-     * @param \RaufletBundle\Entity\Trainer $trainer
+     * @param \Application\Sonata\UserBundle\Entity\User $trainer
      *
      * @return Pokemons
      */
-    public function setTrainer(\RaufletBundle\Entity\Trainer $trainer)
+    public function setTrainer(\Application\Sonata\UserBundle\Entity\User $trainer)
     {
         $this->trainer = $trainer;
 
@@ -172,7 +172,7 @@ class Pokemons
     /**
      * Get trainer
      *
-     * @return \RaufletBundle\Entity\Trainer
+     * @return \Application\Sonata\UserBundle\Entity
      */
     public function getTrainer()
     {

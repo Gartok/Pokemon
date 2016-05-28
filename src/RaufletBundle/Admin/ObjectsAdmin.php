@@ -25,8 +25,8 @@ class ObjectsAdmin extends AbstractAdmin
                 'class' => 'RaufletBundle\Entity\ObjectsType',
                 'choice_label' => 'name'
             ))
-            ->add('npc', 'entity', array(
-                'class' => 'RaufletBundle\Entity\Npc',
+            ->add('trainer', 'entity', array(
+                'class' => 'Application\Sonata\UserBundle\Entity\User',
                 'choice_label' => 'name'
             ))
         ;
@@ -39,7 +39,7 @@ class ObjectsAdmin extends AbstractAdmin
             ->add('name')
             ->add('quantity')
             ->add('type.name')
-            ->add('npc.name')
+            ->add('trainer.name')
 
         ;
     }
@@ -52,7 +52,7 @@ class ObjectsAdmin extends AbstractAdmin
             ->add('name')
             ->add('quantity')
             ->add('type.name')
-            ->add('npc.name')
+            ->add('trainer.name')
         ;
     }
 
@@ -63,7 +63,7 @@ class ObjectsAdmin extends AbstractAdmin
             ->add('name')
             ->add('quantity')
             ->add('type.name')
-            ->add('npc.name')
+            ->add('trainer.name')
         ;
     }
 }

@@ -41,10 +41,10 @@ class Objects
     private $type;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Npc", inversedBy="objects")
+     * @ORM\ManyToOne(targetEntity="\Application\Sonata\UserBundle\Entity\User", inversedBy="objects")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $npc;
+    private $trainer;
 
     /**
      * Get id
@@ -131,13 +131,13 @@ class Objects
     /**
      * Set npc
      *
-     * @param \RaufletBundle\Entity\Npc $npc
+     * @param \Application\Sonata\UserBundle\Entity\User $trainer
      *
      * @return Objects
      */
-    public function setNpc(\RaufletBundle\Entity\Npc $npc)
+    public function setTrainer(\Application\Sonata\UserBundle\Entity\User $trainer)
     {
-        $this->npc = $npc;
+        $this->trainer = $trainer;
 
         return $this;
     }
@@ -145,10 +145,10 @@ class Objects
     /**
      * Get npc
      *
-     * @return \RaufletBundle\Entity\Npc
+     * @return \Application\Sonata\UserBundle\Entity
      */
-    public function getNpc()
+    public function getTrainer()
     {
-        return $this->npc;
+        return $this->trainer;
     }
 }

@@ -25,7 +25,7 @@ class PokemonsAdmin extends AbstractAdmin
                 'label' => 'Date de Capture'
             ))
             ->add('trainer', 'entity', array(
-                'class' => 'RaufletBundle\Entity\Trainer',
+                'class' => 'Application\Sonata\UserBundle\Entity\User',
                 'choice_label' => 'name'
             ))
             ->add('firstAttack', 'entity', array(
