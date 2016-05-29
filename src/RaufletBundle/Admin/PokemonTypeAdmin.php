@@ -50,11 +50,10 @@ class PokemonTypeAdmin extends AbstractAdmin
                 'choice_label' => 'name',
                 'multiple' => true
             ))
-            ->add('evolutions', 'sonata_type_collection', array(
-                'required' => false,
-                'btn_add'       => 'Ajouter une Evolution',      //Specify a custom label
-            ), array(
-                'placeholder' => 'Aucune Evolution sélectionner',
+            ->add('evolutions', 'entity', array(
+                'class'    => 'RaufletBundle:PokemonType',
+                'property' => 'name',
+                'label'    => 'Evolutions',
                 'multiple' => true
             ))
         ;
@@ -64,17 +63,23 @@ class PokemonTypeAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name')
-            ->add('attack')
-            ->add('attackSpe')
-            ->add('defence')
-            ->add('defenceSpe')
-            ->add('speed')
-            ->add('life')
-            ->add('types.name')
-            ->add('pokedex.id')
-            ->add('zones.name')
-            ->add('evolutions.name')
+            ->add('attack', null, array('label' => 'Attaque'))
+            ->add('attackSpe', null, array('label' => 'Attaque Spécial'))
+            ->add('defence', null, array('label' => 'Défense'))
+            ->add('defenceSpe', null, array('label' => 'Défense Spécial'))
+            ->add('speed', null, array('label' => 'Vitesse'))
+            ->add('life', null, array('label' => 'Vie'))
+            ->add('types', null, array('associated_property' => 'name', 'label' => 'Types'), 'entity', array(
+                'class'    => 'RaufletBundle:Type',
+                'choice_label' => 'name',
+            ))            ->add('pokedex.id')
+            ->add('zones', null, array('associated_property' => 'name', 'label' => 'Zones'), 'entity', array(
+                'class'    => 'RaufletBundle:PokemonType',
+                'choice_label' => 'name',
+            ))            ->add('evolutions', null, array('associated_property' => 'name', 'label' => 'Evolutions'), 'entity', array(
+                'class'    => 'RaufletBundle:PokemonType',
+                'choice_label' => 'name',
+            ))
         ;
     }
 
@@ -82,17 +87,25 @@ class PokemonTypeAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name')
-            ->add('attack')
-            ->add('attackSpe')
-            ->add('defence')
-            ->add('defenceSpe')
-            ->add('speed')
-            ->add('life')
-            ->add('types.name')
-            ->add('pokedex.id')
-            ->add('zones.name')
-            ->add('evolutions.name')
+            ->addIdentifier('name', null, array('label' => 'Index'))
+            ->add('attack', null, array('label' => 'Attaque'))
+            ->add('attackSpe', null, array('label' => 'Attaque Spécial'))
+            ->add('defence', null, array('label' => 'Défense'))
+            ->add('defenceSpe', null, array('label' => 'Défense Spécial'))
+            ->add('speed', null, array('label' => 'Vitesse'))
+            ->add('life', null, array('label' => 'Vie'))
+            ->add('types', null, array('associated_property' => 'name', 'label' => 'Types'), 'entity', array(
+                'class'    => 'RaufletBundle:Type',
+                'choice_label' => 'name',
+            ))            ->add('pokedex.id')
+            ->add('zones', null, array('associated_property' => 'name', 'label' => 'Zones'), 'entity', array(
+                'class'    => 'RaufletBundle:PokemonType',
+                'choice_label' => 'name',
+            ))
+            ->add('evolutions', null, array('associated_property' => 'name', 'label' => 'Evolutions'), 'entity', array(
+                'class'    => 'RaufletBundle:PokemonType',
+                'choice_label' => 'name',
+            ))
         ;
     }
 

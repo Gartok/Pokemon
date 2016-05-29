@@ -24,6 +24,7 @@ class PositionAdmin extends AbstractAdmin
             ->add('zone', 'entity', array(
                 'class' => 'RaufletBundle\Entity\Zone',
                 'choice_label' => 'name',
+                'label' => 'Nom de la Zone'
             ))
         ;
     }
@@ -34,7 +35,7 @@ class PositionAdmin extends AbstractAdmin
         $datagridMapper
             ->add('x')
             ->add('y')
-            ->add('zone.name')
+            ->add('zone.name', null, array('label' => 'Nom de la Zone'))
         ;
     }
 
@@ -45,7 +46,7 @@ class PositionAdmin extends AbstractAdmin
             ->addIdentifier('id')
             ->add('x')
             ->add('y')
-            ->add('zone.name')
+            ->add('zone.name', null, array('label' => 'Nom de la Zone'))
         ;
     }
 

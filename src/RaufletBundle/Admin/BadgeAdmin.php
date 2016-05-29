@@ -16,19 +16,22 @@ class BadgeAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('name', 'text', array(
-                'label' => 'Nom de l\'object'
+                'label' => 'Nom du badge'
             ))
             ->add('master', 'entity', array(
-                'class' => 'RaufletBundle\Entity\Trainer',
-                'choice_label' => 'name'
+                'class' => 'Application\Sonata\UserBundle\Entity\User',
+                'choice_label' => 'name',
+                'label' => 'Maitre de l\'arène'
             ))
             ->add('arena', 'entity', array(
                 'class' => 'RaufletBundle\Entity\Arena',
-                'choice_label' => 'name'
+                'choice_label' => 'name',
+                'label' => 'Arène'
             ))
             ->add('zone', 'entity', array(
                 'class' => 'RaufletBundle\Entity\Zone',
-                'choice_label' => 'name'
+                'choice_label' => 'name',
+                'label' => 'Zone'
             ))
         ;
     }
@@ -49,10 +52,9 @@ class BadgeAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('id')
-            ->add('name')
-            ->add('master.name')
-            ->add('arena.name')
-            ->add('zone.name')
+            ->add('name', null, array('label' => 'Nom du Badge'))
+            ->add('master.name', null, array('label' => 'Maitre d\'arène'))
+            ->add('arena.name', null, array('label' => 'Nom de l\'arène'))
         ;
     }
 

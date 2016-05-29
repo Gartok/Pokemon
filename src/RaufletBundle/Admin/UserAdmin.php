@@ -25,15 +25,15 @@ class UserAdmin extends BaseUserAdmin
             ->add('enabled', null, array('editable' => true))
             ->add('locked', null, array('editable' => true))
             ->add('createdAt')
-            ->add('pokemons.name', null, array('label' => "Pokemons"))
-            ->add('objects.name', null, array('label' => "Objects"))
+            ->add('pokemons', null, array('associated_property' => 'surname', 'label' => 'Pokemons'), 'entity', array(
+                'class'    => 'RaufletBundle:Pokemons',
+                'choice_label' => 'name',
+            ))
+            ->add('objects', null, array('associated_property' => 'name', 'label' => 'Objects'), 'entity', array(
+                'class'    => 'RaufletBundle:Objets',
+                'choice_label' => 'name',
+            ))
         ;
-
-        if ($this->isGranted('ROLE_ALLOWED_TO_SWITCH')) {
-            $listMapper
-                ->add('impersonating', 'string', array('template' => 'SonataUserBundle:Admin:Field/impersonating.html.twig'))
-            ;
-        }
     }
 
     /**

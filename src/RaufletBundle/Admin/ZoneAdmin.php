@@ -19,15 +19,12 @@ class ZoneAdmin extends AbstractAdmin
             ))
             ->add('positions', 'entity', array(
                 'class' => 'RaufletBundle\Entity\Position',
-                'choice_label' => 'name',
+                'multiple' => true
             ))
             ->add('pokemonTypes', 'entity', array(
-                'class' => 'RaufletBundle\Entity\PokemonTypes',
+                'class' => 'RaufletBundle\Entity\PokemonType',
                 'choice_label' => 'name',
-            ))
-            ->add('badges', 'entity', array(
-                'class' => 'RaufletBundle\Entity\Badge',
-                'choice_label' => 'name',
+                'multiple' => true
             ))
         ;
     }
@@ -36,9 +33,12 @@ class ZoneAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name')
-            ->add('positions')
-            ->add('badges.name')
+            ->add('name', null, array('label' => 'Nom'))
+            ->add('positions', null, array('label' => 'Positions'))
+            ->add('pokemonTypes', null, array('associated_property' => 'name', 'label' => 'Zones'), 'entity', array(
+                'class'    => 'RaufletBundle:PokemonType',
+                'choice_label' => 'name',
+            ))
         ;
     }
 
@@ -47,9 +47,12 @@ class ZoneAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('id')
-            ->add('name')
-            ->add('positions')
-            ->add('badges.name')
+            ->add('name', null, array('label' => 'Nom'))
+            ->add('positions', null, array('label' => 'Positions'))
+            ->add('pokemonTypes', null, array('associated_property' => 'name', 'label' => 'Type de Pokemon'), 'entity', array(
+                'class'    => 'RaufletBundle:PokemonType',
+                'choice_label' => 'name',
+            ))
         ;
     }
 

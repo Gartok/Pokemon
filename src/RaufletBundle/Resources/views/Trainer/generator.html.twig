@@ -63,7 +63,7 @@
                 <label class="control-label required" for="s5742bef889adc_name">Type de Pokémon Disponible :</label>
             </div>
             <div class="row type-list">
-                    <ul id="sortable1" class="connectedSortable">
+                    <ul id="sortable1" class="sortable1 connectedSortable">
                     {% for type in types %}
                         <li id="{{ type.id }}" class="ui-state-default" name="{{ type.name }}">{{ type.name }}</li>
                     {% endfor %}
@@ -75,7 +75,7 @@
                 <label class="control-label required" for="s5742bef889adc_name">Type de Pokémon Sélectionner :</label>
             </div>
             <div class="row type-list">
-                    <ul id="sortable2" class="connectedSortable">
+                    <ul id="sortable2" class="sortable2 connectedSortable">
 
                     </ul>
             </div>
@@ -83,7 +83,34 @@
             {{ form_widget(form.types, {'attr': {'class': 'form-control hidden'}}) }}
 
         </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div class="row">
+                <label class="control-label required" for="s5742bef889adc_name">Evolution Disponible :</label>
+            </div>
+            <div class="row type-list">
+                <ul id="sortableListEvolution" class="sortable1 connectedSortable">
+                    {% for evolution in evolutions %}
+                        <li id="{{ evolution.id }}" class="ui-state-default" name="{{ evolution.name }}">{{ evolution.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="row">
+                <label class="control-label required" for="s5742bef889adc_name">Evolution Sélectionner :</label>
+            </div>
+            <div class="row type-list">
+                <ul id="sortableEvolution" class="sortable2 connectedSortable">
 
+                </ul>
+            </div>
+
+            {{ form_widget(form.evolutions, {'attr': {'class': 'form-control hidden'}}) }}
+
+        </div>
+    </div>
 
     <div class="attack-container col-xs-12 col-md-6 col-md-offset-3">
         {{ form_row(form.save) }}
@@ -111,16 +138,23 @@
                 }).disableSelection();
             });
         </script>
-        <script type="text/javascript">
-            var typeCount = '{{ form.types | length }}';
-
-            jQuery(document).ready(function() {
-                jQuery('#add-another-type').click(function() {
-
-
-                    return false;
-                });
-            })
+        <script>
+            $(function() {
+                $( "#sortableListEvolution, #sortableEvolution" ).sortable({
+                    update: function(event, ui) {
+                        if (this.id == "sortableEvolution") {
+                            $('#pokemon_type_evolutions option[value='+ $(ui.item).attr('id') +']').prop('selected', true)
+                        } else {
+                            $('#pokemon_type_evolutions option[value='+ $(ui.item).attr('id') +']').prop('selected', false)
+                        }
+                    }
+                })
+            });
+            $(function() {
+                $( "#sortableListEvolution, #sortableEvolution" ).sortable({
+                    connectWith: ".connectedSortable"
+                }).disableSelection();
+            });
         </script>
     {% endblock %}
 {% endblock %}

@@ -23,11 +23,13 @@ class ObjectsAdmin extends AbstractAdmin
             ))
             ->add('type', 'entity', array(
                 'class' => 'RaufletBundle\Entity\ObjectsType',
-                'choice_label' => 'name'
+                'choice_label' => 'name',
+                'label' => 'Tyoe'
             ))
             ->add('trainer', 'entity', array(
                 'class' => 'Application\Sonata\UserBundle\Entity\User',
-                'choice_label' => 'name'
+                'choice_label' => 'name',
+                'label' => 'Dresseur'
             ))
         ;
     }
@@ -48,11 +50,11 @@ class ObjectsAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id')
-            ->add('name')
-            ->add('quantity')
-            ->add('type.name')
-            ->add('trainer.name')
+            ->addIdentifier('id', null, array('label' => 'Index'))
+            ->add('name', null, array('label' => 'Nom'))
+            ->add('quantity', null, array('label' => 'Quantité'))
+            ->add('type.name', null, array('label' => 'Type'))
+            ->add('trainer.name', null, array('label' => 'Dresseur'))
         ;
     }
 

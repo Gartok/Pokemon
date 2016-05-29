@@ -28,8 +28,13 @@ class PokemonTypeType extends AbstractType
                 'class'   => 'RaufletBundle\Entity\Type',
                 'choice_label' => "name",
                  'multiple' => true,
+            ))
+            ->add('evolutions', 'entity', array(
+                'class'   => 'RaufletBundle\Entity\PokemonType',
+                'choice_label' => "name",
+                'multiple' => true,
+                'required' => false,
             ));
-
         ;
     }
     

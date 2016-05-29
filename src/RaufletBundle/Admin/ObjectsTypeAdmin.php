@@ -33,8 +33,8 @@ class ObjectsTypeAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id')
-            ->add('name')
+            ->addIdentifier('id', null, array('label' => 'Index'))
+            ->add('name', null, array('label' => 'Nom'))
         ;
     }
 

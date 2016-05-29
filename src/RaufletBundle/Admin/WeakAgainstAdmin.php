@@ -18,12 +18,12 @@ class WeakAgainstAdmin extends AbstractAdmin
                 'label' => 'Modificateur'
             ))
             ->add('firstType', 'entity', array(
-                'label' => 'Type Attaquant',
+                'label' => 'Type Défenseur',
                 'class' => 'RaufletBundle\Entity\Type',
                 'choice_label' => 'name',
             ))
             ->add('secondType', 'entity', array(
-                'label' => 'Type Défenseur',
+                'label' => 'Type Attaquant',
                 'class' => 'RaufletBundle\Entity\Type',
                 'choice_label' => 'name'
             ))
@@ -34,9 +34,9 @@ class WeakAgainstAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('modifier')
-            ->add('firstType.name')
-            ->add('secondType.name')
+            ->add('modifier', null, array('label' => 'Modificateur'))
+            ->add('firstType.name', null, array('label' => 'Type Défenseur'))
+            ->add('secondType.name', null, array('label' => 'Type Attaquant'))
         ;
     }
 
@@ -44,9 +44,10 @@ class WeakAgainstAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('modifier')
-            ->add('firstType.name')
-            ->add('secondType.name')
+            ->addIdentifier('id')
+            ->add('modifier', null, array('label' => 'Modificateur'))
+            ->add('firstType.name', null, array('label' => 'Type Défenseur'))
+            ->add('secondType.name', null, array('label' => 'Type Attaquant'))
         ;
     }
 

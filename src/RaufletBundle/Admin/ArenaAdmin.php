@@ -16,11 +16,11 @@ class ArenaAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('name', 'text', array(
-                'label' => 'Nom de l\'object'
+                'label' => 'Nom de l\'arène'
             ))
             ->add('position', 'sonata_type_model_list', array(
                 'btn_add'       => 'Ajouter une Position',      //Specify a custom label
-                'btn_list'      => false,     //which will be translated
+                'btn_list'      => true,     //which will be translated
                 'btn_delete'    => false,             //or hide the button.
                 'btn_catalogue' => 'SonataNewsBundle' //Custom translation domain for buttons
             ), array(
@@ -43,7 +43,7 @@ class ArenaAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('id')
-            ->add('name')
+            ->add('name', null, array('label' => 'Arène'))
             ->add('position')
         ;
     }

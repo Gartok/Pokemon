@@ -12,7 +12,6 @@
 !var/logs/.gitkeep
 
 # Parameters
-/app/config/parameters.yml
 /app/config/parameters.ini
 
 # Managed by Composer

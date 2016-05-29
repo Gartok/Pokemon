@@ -41,12 +41,14 @@ class TrainerController extends Controller
         $user = $this->getUser();
 
         $types = $em->getRepository('RaufletBundle:Type')->findAll();
+        $evolutions = $em->getRepository('RaufletBundle:PokemonType')->findAll();
 
         return $this->render('RaufletBundle:Trainer:generator.html.twig', array(
             'user' => $user,
             'types' => $types,
             'form' => $form->createView(),
-            'pokemonType' => $pokemonType
+            'pokemonType' => $pokemonType,
+            'evolutions' => $evolutions
         ));
     }
 

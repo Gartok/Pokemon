@@ -26,7 +26,8 @@ class NpcAdmin extends AbstractAdmin
             ))
             ->add('trainer', 'entity', array(
                 'class' => 'Application\Sonata\UserBundle\Entity\User',
-                'choice_label' => 'name'
+                'choice_label' => 'name',
+                'label' => "Dresseur"
             ))
         ;
     }
@@ -48,11 +49,11 @@ class NpcAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('id')
-            ->add('name')
-            ->add('profession')
-            ->add('text')
-            ->add('objects.name')
-            ->add('trainer.name')
+            ->add('name', null, array('label' => 'Nom'))
+            ->add('profession', null, array('label' => 'Profession'))
+            ->add('text', null, array('label' => 'Teste'))
+            ->add('objects.name', null, array('label' => 'Objets'))
+            ->add('trainer.name', null, array('label' => 'Dresseur'))
         ;
     }
 

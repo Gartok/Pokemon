@@ -18,11 +18,11 @@ class WinAdmin extends AbstractAdmin
                 'label' => 'Date de Victoire'
             ))
             ->add('trainer', 'entity', array(
-                'class' => 'RaufletBundle\Entity\WeakAgainst',
+                'class' => 'Application\Sonata\UserBundle\Entity\User',
                 'choice_label' => 'name',
             ))
             ->add('badge', 'entity', array(
-                'class' => 'RaufletBundle\Entity\WeakAgainst',
+                'class' => 'RaufletBundle\Entity\Badge',
                 'choice_label' => 'name',
             ))
         ;
@@ -32,9 +32,9 @@ class WinAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('obtention')
-            ->add('trainer.username')
-            ->add('badge.name')
+            ->add('obtention', null, array('label' => 'Date de Victoire'))
+            ->add('trainer.username', null, array('label' => 'Dresseur'))
+            ->add('badge.name', null, array('label' => 'Badge'))
         ;
     }
 
@@ -42,9 +42,10 @@ class WinAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('obtention')
-            ->add('trainer.username')
-            ->add('badge.name')
+            ->addIdentifier('id')
+            ->add('obtention', null, array('label' => 'Date de Victoire'))
+            ->add('trainer.username', null, array('label' => 'Dresseur'))
+            ->add('badge.name', null, array('label' => 'Badge'))
         ;
     }
 

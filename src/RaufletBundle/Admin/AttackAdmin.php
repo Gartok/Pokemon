@@ -16,7 +16,7 @@ class AttackAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('name', 'text', array(
-                'label' => 'Nom de l\'object'
+                'label' => 'Nom de l\'attaque'
             ))
             ->add('power', 'number', array(
                 'label' => 'Puissance'
@@ -26,7 +26,8 @@ class AttackAdmin extends AbstractAdmin
             ))
             ->add('type', 'entity', array(
                 'class' => 'RaufletBundle\Entity\Type',
-                'choice_label' => 'name'
+                'choice_label' => 'name',
+                'label' => 'Type'
             ))
         ;
     }
@@ -35,10 +36,10 @@ class AttackAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name')
-            ->add('power')
-            ->add('accurate')
-            ->add('type.name')
+            ->add('name', null, array('label' => 'Nom de l\'attaque'))
+            ->add('power', null, array('label' => 'Puissance'))
+            ->add('accurate', null, array('label' => 'Precision'))
+            ->add('type.name', null, array('label' => 'Type'))
         ;
     }
 
@@ -46,11 +47,11 @@ class AttackAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id')
-            ->add('name')
-            ->add('power')
-            ->add('accurate')
-            ->add('type.name')
+            ->addIdentifier('id', null, array('label' => 'Index'))
+            ->add('name', null, array('label' => 'Nom de l\'attaque'))
+            ->add('power', null, array('label' => 'Puissance'))
+            ->add('accurate', null, array('label' => 'Precision'))
+            ->add('type.name', null, array('label' => 'Type'))
         ;
     }
 

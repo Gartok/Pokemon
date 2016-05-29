@@ -46,9 +46,9 @@ class StrongAgainstAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('id')
-            ->add('modifier')
-            ->add('firstType.name')
-            ->add('secondType.name')
+            ->add('modifier', null, array('label' => 'Modificateur'))
+            ->add('firstType.name', null, array('label' => 'Type Attaquant'))
+            ->add('secondType.name', null, array('label' => 'Type Défenseur'))
         ;
     }
 

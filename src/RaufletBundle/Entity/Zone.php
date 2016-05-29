@@ -80,30 +80,6 @@ class Zone
         $this->pokemonTypes = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Set badges
-     *
-     * @param \RaufletBundle\Entity\Badge $badges
-     *
-     * @return Zone
-     */
-    public function setBadges(\RaufletBundle\Entity\Badge $badges = null)
-    {
-        $this->badges = $badges;
-
-        return $this;
-    }
-
-    /**
-     * Get badges
-     *
-     * @return \RaufletBundle\Entity\Badge
-     */
-    public function getBadges()
-    {
-        return $this->badges;
-    }
-
 
     /**
      * Add pokemonType
@@ -163,29 +139,6 @@ class Zone
         return $this->positions;
     }
 
-    /**
-     * Add badge
-     *
-     * @param \RaufletBundle\Entity\Badge $badge
-     *
-     * @return Zone
-     */
-    public function addBadge(\RaufletBundle\Entity\Badge $badge)
-    {
-        $this->badges[] = $badge;
-
-        return $this;
-    }
-
-    /**
-     * Remove badge
-     *
-     * @param \RaufletBundle\Entity\Badge $badge
-     */
-    public function removeBadge(\RaufletBundle\Entity\Badge $badge)
-    {
-        $this->badges->removeElement($badge);
-    }
 
     /**
      * Add position
